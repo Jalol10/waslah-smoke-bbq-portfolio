@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#0A0A0A">
+<title>WASLAH | Buyer Confidence — Interactive Concept</title>
+<style>
+:root{--bg:#0A0A0A;--surface:#131313;--muted:#B9B6AD;--gold:#C6A664;--ink:#F5F4EF}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Arial,Helvetica,sans-serif}
+header,main,footer{margin:auto;max-width:1160px;padding-left:clamp(18px,4vw,55px);padding-right:clamp(18px,4vw,55px)}
+header{padding-top:24px;padding-bottom:24px;border-bottom:1px solid #454038;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.brand{font-weight:900;letter-spacing:.1em}.brand small{display:block;font-size:10px;color:var(--gold);letter-spacing:.18em}
+.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.19em;color:var(--gold);font-weight:800}
+h1{font-size:clamp(43px,7vw,90px);line-height:1;letter-spacing:-.06em;margin:22px 0}h1 em{color:#98948F;font-style:normal}
+h2{font-size:clamp(28px,4vw,48px);line-height:1.05;letter-spacing:-.047em;margin:15px 0}
+p{max-width:750px}.lead{color:#E1DDD5;font-size:clamp(17px,2vw,21px)}.muted{color:var(--muted)}
+.hero{padding:clamp(45px,7vw,85px) 0 38px}.hero p{max-width:800px}
+.pill{display:inline-block;border:1px solid #625B4C;padding:7px 11px;color:var(--gold);font-size:11px;border-radius:4px}
+section{margin-bottom:clamp(35px,6vw,80px)}
+.panel{padding:clamp(19px,4vw,40px);border-radius:12px;border:1px solid #3F3B32;background:var(--surface)}
+.twocol{display:grid;grid-template-columns:1.1fr 1fr;gap:32px;margin-top:27px}
+.study{background:#31251D;padding:10px;border-radius:8px}.study svg{width:100%;height:auto;display:block}
+.caption{font-size:12px;color:#BEB5A8;margin-top:10px}
+button,a{font:inherit}button:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+button{cursor:pointer;min-height:55px;background:#29251F;color:var(--ink);border:1px solid #786C5C;padding:14px;text-align:left;border-radius:6px}
+button:hover,button[aria-pressed=true]{border-color:var(--gold);background:#3C3020}
+.opts{display:grid;gap:10px}
+.result{margin-top:15px;min-height:42px;color:#D8CDBA;font-size:14px}.result.error{color:#F3C3B9}.result.ok{color:#DAE8C4}
+.benefit{display:grid;grid-template-columns:46px 1fr;gap:14px;border-top:1px solid #464139;padding:20px 0}.benefit b{font-size:18px}.num{color:var(--gold);font-weight:800}
+a{color:inherit}.cta{display:inline-block;background:var(--ink);color:#171717;font-weight:800;text-decoration:none;padding:15px 20px;border-radius:5px}
+.disclaimer{border-left:2px solid var(--gold);padding-left:17px;font-size:14px;color:#C1BAAB}
+footer{border-top:1px solid #3F3A32;padding-top:27px;padding-bottom:55px;color:#BBB6AA;font-size:12px}
+@media(max-width:700px){.twocol{grid-template-columns:1fr;gap:19px}header{align-items:start}h1{letter-spacing:-.05em}}
+</style></head><body>
+<header><div class="brand">WASLAH SMOKE BBQ<small>PRODUCT EXPERIENCE STUDIO</small></div><div class="eyebrow">Independent B2B concept</div></header>
+<main><section class="hero">
+<div class="pill">Interactive demonstration · 60 seconds</div>
+<h1>Complex products.<br><em>Clear decisions.</em></h1>
+<p class="lead">A premium product purchase can leave customers asking: what do I do next? This concept shows how a retailer could guide one meaningful choice, give specific feedback and connect education to a product journey.</p>
+<p class="muted">This WASLAH-developed independent example is not endorsed or approved by any retailer. It does not teach a full cooking or food-safety procedure.</p>
+</section>
+<section class="panel" id="demo"><div class="eyebrow">Try the interaction</div><h2>Can you find the grain?</h2><p class="muted">Study this conceptual fibre sample. It shows the directional principle only, not the actual anatomy of a retailer's brisket.</p>
+<div class="twocol"><div><div class="study">
+<svg viewBox="0 0 540 330" role="img" aria-label="Stylized long muscle fibres mostly extending horizontally">
+<rect x="22" y="22" width="496" height="282" rx="30" fill="#78513F"/>
+<g fill="none" stroke="#D9AC8B" stroke-width="4" stroke-linecap="round"><path d="M48 76 Q161 57 292 77 T493 74"/><path d="M47 126 Q169 102 294 121 T493 118"/><path d="M47 174 Q158 152 291 167 T493 169"/><path d="M48 220 Q158 193 290 220 T492 209"/><path d="M48 264 Q179 243 292 258 T493 251"/></g>
+<g id="solution" style="display:none"><path d="M270 64 L270 265" stroke="#D7F0CA" stroke-width="8" stroke-linecap="round"/><path d="M248 242 L270 269 L292 242" stroke="#D7F0CA" stroke-width="8" fill="none" stroke-linecap="round"/></g></svg>
+</div><p class="caption">Illustration, not a product photograph. The green cutting arrow is intentionally hidden until the two checks are completed.</p></div>
+<div><div id="first"><div class="eyebrow">Check 01 / Observe</div><h3>Which direction do the long fibres mostly run?</h3><div class="opts"><button data-a="wrong">A — Top to bottom</button><button data-a="right">B — Left to right</button></div><p id="f1" class="result" aria-live="polite">Choose by inspecting the drawing.</p></div>
+<div id="second" hidden><div class="eyebrow">Check 02 / Decide</div><h3>Which proposed cut crosses those fibres?</h3><div class="opts"><button data-b="right">A — Top to bottom</button><button data-b="wrong">B — Left to right</button></div><p id="f2" class="result" aria-live="polite">The answer is not displayed in the drawing yet.</p></div>
+<div id="complete" hidden><div class="eyebrow">Checkpoint complete</div><h3 style="color:#D7F0CA">Correct: a perpendicular cut.</h3><p>You traced horizontal fibres and selected a vertical crossing cut. A real brisket requires checking the fibre direction on each muscle.</p><button id="again">Repeat the example ↺</button></div>
+</div></div></section>
+<section><div class="eyebrow">Proposed custom B2B pilot</div><h2>Beyond a recipe or a quiz.</h2>
+<div class="benefit"><div class="num">01</div><div><b>One exact product family</b><p class="muted">Customer journey based on a retailer's approved products, rather than invented sizes or descriptions.</p></div></div>
+<div class="benefit"><div class="num">02</div><div><b>Five sequential learning decisions</b><p class="muted">Interactive modules, distinct instructional illustrations, meaningful questions and explanations.</p></div></div>
+<div class="benefit"><div class="num">03</div><div><b>Business handoffs and event hooks</b><p class="muted">Optional buyer-selected product links and activation/completion events ready for the client's analytics team to connect.</p></div></div>
+<div class="benefit"><div class="num">04</div><div><b>Client approval before release</b><p class="muted">Retailer product facts, imagery, brand permissions, local safety wording and any exact smoker manual must be confirmed.</p></div></div>
+<p class="disclaimer">This public sample only demonstrates a visual decision. The full five-step R3 learning prototype is available for limited B2B review on request. No consumer cooking guidance, sales increase or human learning outcome has been validated.</p></section>
+<section class="panel"><div class="eyebrow">Talk to WASLAH</div><h2>Would a guided product experience help your customers?</h2><p class="lead">Discuss one narrowly scoped pilot before investing in a larger implementation.</p><a class="cta" href="mailto:akmalposhshohanov@gmail.com?subject=WASLAH%20product%20confidence%20pilot">Request a short walkthrough ↗</a></section>
+</main>
+<footer>WASLAH SMOKE BBQ · Independent concept · 2026<br><a href="mailto:akmalposhshohanov@gmail.com">akmalposhshohanov@gmail.com</a> · Not affiliated with a retailer. Directional slicing principle: <a href="https://www.traeger.com/en/learn/how-to-slice-brisket" target="_blank" rel="noopener noreferrer">Traeger reference</a>.</footer>
+<script>(()=>{"use strict";const $=x=>document.querySelector(x);let phase=1;
+const first=$("#first"),second=$("#second"),done=$("#complete"),sol=$("#solution");
+function reset(){phase=1;first.hidden=false;second.hidden=true;done.hidden=true;sol.style.display="none";$("#f1").textContent="Choose by inspecting the drawing.";$("#f2").textContent="The answer is not displayed in the drawing yet.";for(const b of document.querySelectorAll("button[data-a],button[data-b]"))b.setAttribute("aria-pressed","false")}
+function err(id,txt){const e=$(id);e.textContent=txt;e.classList.add("error")}
+document.querySelectorAll("button[data-a]").forEach(b=>b.addEventListener("click",()=>{if(phase!==1)return;document.querySelectorAll("button[data-a]").forEach(x=>x.setAttribute("aria-pressed","false"));b.setAttribute("aria-pressed","true");if(b.dataset.a==="right"){phase=2;first.hidden=true;second.hidden=false;second.querySelector("button").focus()}else err("#f1","Trace the visible long strands from left to right. Try again.")}));
+document.querySelectorAll("button[data-b]").forEach(b=>b.addEventListener("click",()=>{if(phase!==2)return;document.querySelectorAll("button[data-b]").forEach(x=>x.setAttribute("aria-pressed","false"));b.setAttribute("aria-pressed","true");if(b.dataset.b==="right"){phase=3;second.hidden=true;done.hidden=false;sol.style.display="";$("#again").focus()}else err("#f2","That proposed cut follows the fibres. Choose a line crossing them.")}));
+$("#again").addEventListener("click",()=>{reset();first.querySelector("button").focus()});reset()})();</script></body></html>
