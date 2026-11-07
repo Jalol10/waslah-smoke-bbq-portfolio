@@ -48,27 +48,52 @@ header.top{background:#0b1210;border-bottom:1px solid #665f46}
 .buyer-eventbar ol{padding:0 0 0 18px;margin:0;max-height:98px;overflow:auto}
 @media(max-width:900px){.buyer-stage-inner{grid-template-columns:1fr}.buyer-diagram{max-width:620px}.buyer-offer{grid-template-columns:1fr 1fr}}
 @media(max-width:620px){.buyer-stage{padding:52px 22px}.buyer-stage h1{font-size:clamp(52px,12vw,73px)}.buyer-offer{grid-template-columns:1fr;gap:0;padding:15px 22px}.buyer-eventbar{grid-template-columns:1fr}.buyer-cta{display:block;text-align:center;margin-right:0}}
+
+.hero[hidden]{display:none!important}
+.buyer-stage .quickstart{max-width:650px;background:#131c17;border:1px solid #827350;padding:24px;margin:25px 0}
+.buyer-stage .quickstart .quick-heading{color:#ead6aa}
+.ux-device{padding:25px 8px 12px;color:#ebe4d6}
+.ux-head{display:flex;justify-content:space-between;gap:12px;font-size:9px;letter-spacing:.14em;color:#e8d3ac;font-weight:800}
+.ux-progress{display:flex;gap:5px;margin:28px 0 38px}
+.ux-progress i{display:block;background:#586454;height:4px;flex:1}.ux-progress i:first-child{background:#d9bc83}
+.ux-kicker{font-size:10px;letter-spacing:.15em;color:#e3c38b;font-weight:800}
+.ux-title{font-size:clamp(33px,3vw,44px);font-weight:850;line-height:1.03;letter-spacing:-.055em;margin:13px 0 31px;color:#f3ede0}.ux-title em{font-style:normal;color:#a9ae9e}
+.ux-question{font-size:13px;line-height:1.6;color:#f2e8d8;margin-bottom:13px}
+.ux-answer{display:flex;align-items:center;gap:10px;background:#303e31;border:1px solid #bfaa7a;padding:15px;margin:9px 0;font-size:12px;line-height:1.6}
+.ux-answer b,.ux-answer strong{color:#ddc18c}.ux-answer strong{margin-left:auto}.ux-answer.mutedanswer{background:#19251d;border-color:#68735d}
+.ux-foot{border-top:1px solid #857551;padding-top:19px;margin-top:26px;color:#c4c5b5;font-size:12px;line-height:1.6}
+.ux-foot b{font-size:10px;letter-spacing:.13em;color:#dbbe86}.ux-foot p{margin:7px 0 0}
+@media(max-width:620px){
+.buyer-stage h1{font-size:clamp(44px,10.8vw,58px);margin:20px 0}
+.buyer-stage .buyer-lead{font-size:16px}.buyer-stage .buyer-copy{font-size:13px}
+.buyer-stage .quickstart{padding:15px;margin:24px 0}
+.buyer-stage .cut-picks{gap:6px!important}.buyer-stage .cut-picks button{padding:10px 5px!important}
+.buyer-stage .buyer-diagram{display:none}
+.buyer-offer{display:none}
+.buyer-stage .buyer-boundary{font-size:10px}
+}
 </style></head><body><div class="container">
 <header class="top"><div class="identity">WASLAH <span style="color:var(--gold2)">SMOKE BBQ</span><small>PRODUCT &amp; LEARNING STUDIO</small></div><div class="top-right"><span class="draft">UNCOMMISSIONED OWNER REVIEW / 2026</span><a class="contact" href="mailto:akmalposhshohanov@gmail.com">CONTACT THE CREATOR ↗</a></div></header>
 <section class="buyer-stage"><div class="buyer-stage-inner">
 <div class="buyer-proposition"><div class="kicker">WASLAH SMOKE BBQ  /  INDEPENDENT BUYER PREVIEW</div>
-<h1>From a premium cut.<br/><em>To a confident next step.</em></h1>
+<h1>The brisket is sold.<br/><em>Now guide the cook.</em></h1>
 <p class="buyer-lead">A retailer can sell the brisket. WASLAH proposes the guided experience that helps a customer understand what to do next — with measurable usage instead of unverified promises.</p>
-<p class="buyer-copy">Not a static recipe or a two-question teaser. Below is the working five-module R3 learning engine: select Whole, Flat or Point, complete cut-specific checks, review events and reach optional product hand-offs.</p>
-<a class="buyer-cta" href="#quickstart">EXPLORE THE WORKING FIVE-STEP GUIDE ↓</a>
+<p class="buyer-copy">Try the real five-module experience: choose Whole, Flat or Point, make cut-specific decisions and inspect the events it generates.</p>
+<div id="buyerInlineStart" aria-label="Live five-module customer experience starts here"></div>
 <a class="buyer-subcta" href="#buyerDeliverables">What would a buyer commission? ↗</a>
 <p class="buyer-boundary">Independent, not commissioned or approved by any retailer. Prototype diagrams are conceptual; no public food-safety approval, measured sales results, or learning efficacy is claimed.</p>
 </div><aside class="buyer-diagram">
-<div class="topline">BRISKET CONFIDENCE  /  ORIGINAL CONCEPT DRAWING</div>
-<svg viewBox="0 0 540 390" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrative brisket and five checkpoints; not a real product photo">
-<defs><linearGradient id="bcut" x2="1" y2="1"><stop stop-color="#a2694e"/><stop offset="1" stop-color="#47302a"/></linearGradient></defs>
-<path d="M88 178Q112 101 188 104Q247 74 313 114Q407 106 446 171Q471 255 394 298Q312 343 222 314Q108 339 83 265Q62 224 88 178Z" fill="url(#bcut)" stroke="#dbc197" stroke-width="3"/>
-<path d="M104 178Q194 124 279 142Q374 128 431 185" stroke="#e4c6a3" stroke-width="23" fill="none" stroke-linecap="round" opacity=".78"/>
-<path d="M126 219Q196 199 273 224T405 216M125 256Q199 234 281 261T388 258M163 284Q233 265 315 292" stroke="#d2a187" stroke-width="5" stroke-linecap="round" fill="none" opacity=".64"/>
-<g fill="#e1c489"><circle cx="135" cy="359" r="5"/><circle cx="205" cy="359" r="5"/><circle cx="275" cy="359" r="5"/><circle cx="345" cy="359" r="5"/><circle cx="415" cy="359" r="5"/></g>
-<path d="M135 359H415" fill="none" stroke="#8e815f" stroke-width="2"/>
-<g font-family="Arial" font-size="10" fill="#e8d7b8" font-weight="700" letter-spacing="1.2"><text x="135" y="380">01</text><text x="205" y="380">02</text><text x="275" y="380">03</text><text x="345" y="380">04</text><text x="415" y="380">05</text></g>
-</svg>
+<div class="topline">THE PRODUCT / FIVE-STEP INTERACTIVE GUIDE</div>
+<div class="ux-device" role="img" aria-label="Illustrative premium learning interface showing a customer product check; the live experience is on the left">
+<div class="ux-head"><span>WHOLE BRISKET / 01—05</span><span>LEARNING EXPERIENCE</span></div>
+<div class="ux-progress"><i></i><i></i><i></i><i></i><i></i></div>
+<div class="ux-kicker">CHECKPOINT 01 / PRODUCT IDENTITY</div>
+<div class="ux-title">Confirm the cut.<br><em>Before the cook.</em></div>
+<div class="ux-question">Does the label match the product you received?</div>
+<div class="ux-answer"><b>01</b> Read the original pack label <strong>✓</strong></div>
+<div class="ux-answer mutedanswer"><b>02</b> Stop if the product or condition is unclear <strong>!</strong></div>
+<div class="ux-foot"><b>CLIENT VALUE</b><p>A clear customer action, a learning checkpoint and an event the retailer can instrument.</p></div>
+</div>
 <div class="bottomline"><div><small>PRODUCT ROUTES</small><strong>Whole / Flat / Point</strong></div><div><small>REAL CHECKS</small><strong>Five gated modules</strong></div></div>
 </aside></div></section>
 <section class="buyer-offer" id="buyerDeliverables"><div><small>01 / CUSTOMER EXPERIENCE</small><b>Five guided decisions</b><p>Illustrated lessons, specific choices, correct and incorrect feedback, conditional cut routes.</p></div><div><small>02 / MEASUREMENT</small><b>Live event hooks</b><p>Guide-open, module and guide-complete, product-click events. No third-party analytics until client integration.</p></div><div><small>03 / DELIVERY</small><b>Client-hosted pilot</b><p>Static mobile site, approved product destinations and QR launch copy, all subject to client rights and safety review.</p></div></section>
@@ -127,7 +152,7 @@ $('takeaway').textContent=l.takeaway;const chosenArt=index===1&&grainIdentify===
 const opts=$('options');opts.replaceChildren();q.choices.forEach((s,j)=>{const b=document.createElement('button');b.type='button';b.className='option';b.dataset.answer=String(j);b.setAttribute('aria-pressed',String((index===1&&grainIdentify!==0?grainIdentify:answers[index])===j));b.textContent=`${j===0?'A':'B'}  /  ${s}`;b.addEventListener('click',()=>choose(j));opts.appendChild(b);});
 const f=$('feedback');f.className='feedback';const selected=index===1&&grainIdentify!==0?grainIdentify:answers[index];if(selected===null){f.textContent=index===1&&grainIdentify===0?'Part 1 passed. Choose the cut direction for Part 2.':'Choose an answer. The next step unlocks when your answer is correct.';}else{const good=selected===q.correct;f.textContent=q.feedback[selected];f.classList.add(good?'is-ok':'is-bad');}
 $('prev').disabled=index===0;$('next').disabled=!isDone(index);$('next').textContent=index===4?(isDone(index)?'ALL FIVE COMPLETE →':'ANSWER TO FINISH'):(isDone(index)?'CONTINUE TO STEP '+(index+2)+' →':'ANSWER TO CONTINUE');$('lessonExtra').textContent=`REFERENCE: ${l.source} · Diagram is general, not an exact photo of a CarniStore SKU.`;renderSteps();}
-document.querySelectorAll('[data-start-cut],[data-cut]').forEach(b=>b.addEventListener('click',()=>setCut(b.dataset.startCut||b.dataset.cut)));
+document.getElementById('buyerInlineStart').appendChild(document.getElementById('quickstart'));document.querySelector('.hero').hidden=true;document.querySelectorAll('[data-start-cut],[data-cut]').forEach(b=>b.addEventListener('click',()=>setCut(b.dataset.startCut||b.dataset.cut)));
 $('start').addEventListener('click',start);$('grainRetry').addEventListener('click',retryGrain);
 $('prev').addEventListener('click',()=>navTo(index-1));$('next').addEventListener('click',()=>{if(!isDone(index))return;if(index<4)navTo(index+1);else document.querySelector('.handoff').scrollIntoView({block:'start',behavior:'smooth'});});
 document.querySelectorAll('[data-product]').forEach(a=>a.addEventListener('click',()=>track('product_handoff_click',{destination:a.dataset.product})));
