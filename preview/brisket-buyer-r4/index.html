@@ -118,7 +118,12 @@ header.top{background:#0b1210;border-bottom:1px solid #665f46}
 .mobile-figure svg{max-height:210px}.mobile-figure small{font-size:11px;line-height:1.45}
 .quiz{padding:15px 13px}.quiz p{font-size:15px}.options button{min-height:48px}
 .nav button{min-height:48px}
-}</style></head><body><div class="container">
+}
+/* R4.1 changed-only visual readback fixes: native <details> content must really collapse */
+details#expectedResult:not([open])> :not(summary),details#techniqueNotes:not([open])> :not(summary){display:none!important}
+/* Keep post-purchase retail links out of the unfinished learning route */
+.handoff:not([data-released="true"]){display:none!important}
+</style></head><body><div class="container">
 <header class="top"><div class="identity">WASLAH <span style="color:var(--gold2)">SMOKE BBQ</span><small>PRODUCT &amp; LEARNING STUDIO</small></div><div class="top-right"><span class="draft">UNCOMMISSIONED OWNER REVIEW / 2026</span><a class="contact" href="mailto:akmalposhshohanov@gmail.com">CONTACT THE CREATOR ↗</a></div></header>
 <section class="buyer-stage"><div class="buyer-stage-inner">
 <div class="buyer-proposition"><div class="kicker">WASLAH SMOKE BBQ  /  INDEPENDENT BUYER PREVIEW</div>
@@ -192,6 +197,7 @@ $('takeaway').textContent=l.takeaway;const chosenArt=index===1&&grainIdentify===
 const opts=$('options');opts.replaceChildren();q.choices.forEach((s,j)=>{const b=document.createElement('button');b.type='button';b.className='option';b.dataset.answer=String(j);b.setAttribute('aria-pressed',String((index===1&&grainIdentify!==0?grainIdentify:answers[index])===j));b.textContent=`${j===0?'A':'B'}  /  ${s}`;b.addEventListener('click',()=>choose(j));opts.appendChild(b);});
 const f=$('feedback');f.className='feedback';const selected=index===1&&grainIdentify!==0?grainIdentify:answers[index];if(selected===null){f.textContent=index===1&&grainIdentify===0?'Part 1 passed. Choose the cut direction for Part 2.':'Choose an answer. The next step unlocks when your answer is correct.';}else{const good=selected===q.correct;f.textContent=q.feedback[selected];f.classList.add(good?'is-ok':'is-bad');}
 $('prev').disabled=index===0;$('next').disabled=!isDone(index);$('next').textContent=index===4?(isDone(index)?'ALL FIVE COMPLETE →':'ANSWER TO FINISH'):(isDone(index)?'CONTINUE TO STEP '+(index+2)+' →':'ANSWER TO CONTINUE');$('lessonExtra').textContent=`REFERENCE: ${l.source} · Diagram is general, not an exact photo of a CarniStore SKU.`;renderSteps();}
+window.addEventListener('waslah-pilot-event',e=>{if(e.detail.event==='guide_open'||e.detail.event==='guide_complete'){document.querySelector('.handoff').dataset.released=String(e.detail.event==='guide_complete'&&e.detail.status==='complete');}});
 document.getElementById('buyerInlineStart').appendChild(document.getElementById('quickstart'));document.querySelector('.hero').hidden=true;document.querySelectorAll('[data-start-cut],[data-cut]').forEach(b=>b.addEventListener('click',()=>setCut(b.dataset.startCut||b.dataset.cut)));
 $('start').addEventListener('click',start);$('grainRetry').addEventListener('click',retryGrain);
 $('prev').addEventListener('click',()=>navTo(index-1));$('next').addEventListener('click',()=>{if(!isDone(index))return;if(index<4)navTo(index+1);else document.querySelector('.handoff').scrollIntoView({block:'start',behavior:'smooth'});});
