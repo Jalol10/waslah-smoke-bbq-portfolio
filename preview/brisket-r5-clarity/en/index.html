@@ -243,6 +243,25 @@ h1{font:normal clamp(49px,7.5vw,94px)/1.01 Georgia,serif;letter-spacing:-.055em;
 .product-note{font-size:12px;line-height:1.5}
 .j-card h2:focus-visible{outline:2px solid #557659}
 @media(max-width:550px){.hero{background-image:linear-gradient(90deg,#12241aea,#12241ac9),url("https://images.pexels.com/photos/29216195/pexels-photo-29216195/free-photo-of-delicious-sliced-brisket-on-cutting-board.jpeg?auto=compress&dpr=1&h=750&w=1260")}.step-visual div{min-height:95px;padding:9px 6px}.step-visual strong{font-size:15px}.j-actions{margin:16px -15px -21px;padding:11px;gap:9px}.j-actions button{min-height:49px;font-size:12px;padding:10px}.preview-photo img{height:155px}}
+
+.pilot-proof{background:#f0eee3;color:#203b29;border:1px solid #b6c6b7;padding:22px;margin-top:23px}
+.pilot-proof h2{font:normal clamp(28px,4vw,39px)/1.12 Georgia,serif;letter-spacing:-.035em;margin:8px 0}
+.pilot-proof>p{font-size:13px;line-height:1.5}
+.pilot-tag{color:#4b7053;font-size:10px;font-weight:900;letter-spacing:.13em}
+.pilot-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:18px 0 12px}
+.pilot-kpis div{padding:14px 5px;background:#24412e;color:#f8f2e6;text-align:center}
+.pilot-kpis strong{display:block;font:normal 38px/1 Georgia,serif}
+.pilot-kpis span{display:block;font-size:11px;margin-top:7px;color:#d9e8d7}
+.pilot-no-sales strong{color:#95543d}
+.pilot-table{width:100%;border-collapse:collapse;table-layout:fixed;margin:15px 0}
+.pilot-table caption{text-align:left;font-size:12px;font-weight:750;padding-bottom:6px}
+.pilot-table td,.pilot-table th{font-size:12px;text-align:center;padding:9px 3px;border-bottom:1px solid #c1ccbd}
+.pilot-table td:first-child,.pilot-table th:first-child{text-align:left;text-transform:capitalize}
+.pilot-buttons{display:flex;gap:10px;flex-wrap:wrap}
+.pilot-buttons button{flex:1 1 180px;min-height:50px}
+.pilot-buttons .secondary{color:#294e35;border-color:#668a70;background:#ebf0e8}
+.pilot-footnote{font-size:11px!important;color:#536c58}
+@media(max-width:550px){.pilot-proof{padding:14px 10px}.pilot-kpis div{padding:10px 3px}.pilot-kpis strong{font-size:32px}.pilot-kpis span{font-size:10px}.pilot-table td,.pilot-table th{font-size:11px}}
 </style>
 </head>
 <body>
@@ -336,6 +355,17 @@ h1{font:normal clamp(49px,7.5vw,94px)/1.01 Georgia,serif;letter-spacing:-.055em;
 <strong>Commercial status</strong><p>Existing working proposal: USD 4,800 / 10 working days after accepted inputs / 50–50 payment proposal. This is not a signed order, negotiated price or demonstrated ROI.</p>
 </div>
 <button type="button" id="tryBuyer" class="primary">TRY BUYER EXPERIENCE →</button>
+<section class="pilot-proof" aria-label="Local event measurement proof">
+<div class="pilot-tag">LIVE BROWSER PROOF · NOT RETAILER ANALYTICS</div>
+<h2>What can a retailer actually measure?</h2>
+<p>Take the buyer journey, then return here. These counters reflect real clicks on this local page, not customer purchases or fabricated sales.</p>
+<div class="pilot-kpis"><div><strong id="pilotStarts">0</strong><span>Guide starts</span></div><div><strong id="pilotViewed">0</strong><span>Five steps viewed</span></div><div><strong id="pilotClicks">0</strong><span>Product-link click sessions</span></div></div>
+<p class="pilot-rates" id="pilotRates">Five stages viewed: — · Retailer link clicked: —</p>
+<p class="pilot-no-sales">Purchases, revenue, support savings and conversion lift: <strong>NOT CONNECTED / NOT MEASURED</strong></p>
+<table class="pilot-table"><caption>Per-cut activity in this browser visit</caption><thead><tr><th>Cut</th><th>Starts</th><th>5 steps</th><th>Link clicks</th></tr></thead><tbody id="pilotCuts"></tbody></table>
+<div class="pilot-buttons"><button type="button" class="primary" id="pilotExport">EXPORT ACTUAL EVENTS .JSON ↓</button><button type="button" class="secondary" id="pilotTry">TRY BUYER JOURNEY →</button></div>
+<p class="pilot-footnote" id="pilotStatus" role="status" aria-live="polite">Memory only: no cookies, backend, user identities, purchases or stored history. Counts reset on refresh. Outbound click does not prove a sale.</p>
+</section>
 <h2 style="margin-top:28px">Visible local events</h2><div class="event-row" id="events"><span>No interactions yet</span></div>
 <p class="retailer-term">Event hook: <code>waslah:buyer_event</code>. No automatic transmission of customer data; the host must implement a separately reviewed analytics integration.</p>
 </div></section>
@@ -348,6 +378,39 @@ const DATA={"whole":[{"title":"1. Verify your delivery","lead":"Whole brisket in
 const DETAILS={"3":{"title":"Make a stable, measurable smoker setup","steps":["Use the smoker's own instructions and check firebox safety before loading raw meat.","Measure chamber air near cooking-grate height, and meat temperature with a separate food-safe probe.","If heat is unstable or either instrument is suspect, stop and fix the setup before cooking."],"why":"USDA's smoking guidance describes controlled chamber heat and two thermometers. It does not validate any particular seller's recipe or smoker.","links":[["USDA: smoking thermometers","https://ask.fsis.usda.gov/article/Do-you-need-a-thermometer-when-smoking-meat"]]},"4":{"title":"Make the bark / stall decision","steps":["Treat bark as a surface observation, not a meat-safety or tenderness test.","If the internal-temperature rise slows while chamber heat is steady, a stall may be occurring.","Use paper/foil only if your chosen technique calls for it; check probes and meat texture rather than guessing."],"why":"Wrapping is an optional technique used in many recipes; it is not a safety certificate.","links":[["Traeger: smoked brisket method","https://www.traeger.com/learn/how-to-smoked-brisket"],["USDA: thermometers","https://ask.fsis.usda.gov/article/Do-you-need-a-thermometer-when-smoking-meat"]]},"5":{"title":"Separate food safety from tenderness","steps":["Follow the applicable food-safety rules and verified internal readings for beef; a dark crust is not proof.","Check tenderness in a thick meaty area with a probe. A recipe's texture target is separate from a safety minimum.","Do not leave cooked meat cooling uncontrolled. Use approved hot holding or timely safe cooling before slicing."],"why":"U.S. USDA beef and hot-holding references are informational only. UAE/retailer rules and equipment-specific processes require separate approval.","links":[["USDA: beef cooking safety","https://ask.fsis.usda.gov/article/To-what-temperature-should-I-cook-beef"],["USDA: hot holding","https://ask.fsis.usda.gov/article/At-what-temperature-should-I-hold-hot-foods"],["Traeger: preparation method","https://www.traeger.com/learn/how-to-smoked-brisket"]]}};
 const state={cut:"whole",step:-1,selected:null,events:[],passed:new Set(),session:0,completed:false};
 window.WASLAH_EN_EVENTS=state.events;
+const PILOT_EVENTS=[];
+window.addEventListener("waslah:buyer_event",event=>{
+ const v=event.detail;
+ if(!v||!["guide_open","module_complete","guide_complete","product_handoff_click"].includes(v.event)||!["whole","flat","point"].includes(v.cut)||!/^local-[0-9]+$/.test(String(v.session_id)))return;
+ PILOT_EVENTS.push({event:v.event,cut:v.cut,session_id:v.session_id,at:v.at,step:v.step,...(v.module?{module:v.module}:{}),...(v.meaning?{meaning:v.meaning}:{}),...(v.destination?{destination:v.destination}:{}),...(v.variant_selection?{variant_selection:v.variant_selection}:{})});
+ renderPilot();
+});
+function pilotMetrics(){
+ const unique=(name,cut)=>new Set(PILOT_EVENTS.filter(e=>e.event===name&&(!cut||e.cut===cut)).map(e=>e.session_id)).size;
+ const byCut={};
+ for(const cut of ["whole","flat","point"])byCut[cut]={starts:unique("guide_open",cut),viewed:unique("guide_complete",cut),clicks:unique("product_handoff_click",cut)};
+ return {starts:unique("guide_open"),viewed:unique("guide_complete"),clicks:unique("product_handoff_click"),byCut};
+}
+function renderPilot(){
+ const m=pilotMetrics();
+ $("pilotStarts").textContent=m.starts;$("pilotViewed").textContent=m.viewed;$("pilotClicks").textContent=m.clicks;
+ const pct=n=>m.starts?Math.round(100*n/m.starts)+"%":"—";
+ $("pilotRates").textContent="Five stages viewed: "+pct(m.viewed)+" · Product link clicked: "+pct(m.clicks)+" of guide starts";
+ const tbody=$("pilotCuts");tbody.replaceChildren();
+ for(const cut of ["whole","flat","point"]){
+  const row=document.createElement("tr");
+  for(const value of [cut,m.byCut[cut].starts,m.byCut[cut].viewed,m.byCut[cut].clicks]){const cell=document.createElement("td");cell.textContent=String(value);row.appendChild(cell)}
+  tbody.appendChild(row);
+ }
+}
+function exportPilot(){
+ const data={schema:"WASLAH_HOST_EVENT_PROOF_R2",scope:"LOCAL_THIS_BROWSER_ONLY",notMeasured:["purchase","revenue","support_savings","conversion_lift"],totals:pilotMetrics(),events:PILOT_EVENTS.map(e=>({...e}))};
+ const blob=new Blob([JSON.stringify(data,null,2)+"\n"],{type:"application/json;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");
+ a.href=url;a.download="WASLAH_R2_OBSERVED_EVENTS.json";document.body.appendChild(a);a.click();a.remove();
+ setTimeout(()=>URL.revokeObjectURL(url),5000);
+ $("pilotStatus").textContent="Local export triggered for "+PILOT_EVENTS.length+" observed events; these are not orders or sales.";
+}
+window.WASLAH_PILOT_PROOF=Object.freeze({version:"R2",snapshot:()=>({totals:pilotMetrics(),events:PILOT_EVENTS.map(e=>({...e}))})});
 const CUT_LABEL={whole:"Whole",flat:"Flat",point:"Point"};
 const PHOTO={
   bark:{url:"https://images.pexels.com/photos/13068566/pexels-photo-13068566.jpeg?auto=compress&dpr=1&h=750&w=1260",source:"https://www.pexels.com/photo/close-up-of-butcher-holding-meat-13068566/",author:"Andrés Góngora · Pexels",caption:"Photo of a cooked brisket cross-section: not the wrapping moment or evidence of safe cooking."},
@@ -457,7 +520,9 @@ $("start").addEventListener("click",start);$("reset").addEventListener("click",r
 $("tryBuyer").addEventListener("click",()=>{setMode("buyer");reset()});$("toStore").addEventListener("click",()=>setMode("store"));
 $("productExample").addEventListener("click",()=>{if(state.completed)track("product_handoff_click",{demo:true,destination:$("productExample").href,variant_selection:"manual"})});
 $("downloadPlan").addEventListener("click",downloadPlan);
-renderCuts();
+$("pilotExport").addEventListener("click",exportPilot);
+$("pilotTry").addEventListener("click",()=>{setMode("buyer");reset()});
+renderPilot();renderCuts();
 </script>
 </body>
 </html>
