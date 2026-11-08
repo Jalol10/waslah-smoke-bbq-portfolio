@@ -419,7 +419,7 @@ function renderPlan(){
  $("planTitle").textContent="Your "+CUT_LABEL[state.cut]+" checklist";
  $("planIntro").textContent="5 stages and 15 immediate actions, plus deeper notes for the smoker, bark and safe rest.";
  DATA[state.cut].forEach((item,i)=>{
-  const section=document.createElement("section");section.className="plan-section",h=document.createElement("h3");h.textContent=item.title;
+  const section=document.createElement("section");section.className="plan-section";const h=document.createElement("h3");h.textContent=item.title;
   const ol=document.createElement("ol");item.task.forEach(t=>{const li=document.createElement("li");li.textContent=t;ol.appendChild(li)});
   const warn=document.createElement("p");warn.className="plan-warning";warn.textContent="Stop condition: "+item.safety;section.append(h,ol,warn);
   if(i>=2){const d=DETAILS[i+1],extra=document.createElement("div");extra.className="plan-extra";const title=document.createElement("strong");title.textContent=d.title;const l=document.createElement("ol");for(const t of d.steps){const li=document.createElement("li");li.textContent=t;l.appendChild(li)}extra.append(title,l);section.appendChild(extra)}
