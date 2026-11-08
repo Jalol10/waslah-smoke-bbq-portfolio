@@ -16,7 +16,7 @@ header{border-bottom:1px solid #627161}.header{display:flex;align-items:center;j
 .kicker{font-size:11px;letter-spacing:.16em;color:#e3c98e;font-weight:850;text-transform:uppercase}
 h1{font:normal clamp(49px,7.5vw,94px)/1.01 Georgia,serif;letter-spacing:-.055em;margin:20px 0 22px}h1 em{font-style:normal;color:var(--gold)}
 .lead{font-size:clamp(17px,1.9vw,22px);line-height:1.5;color:#d9e2d4;max-width:720px;margin:0 0 28px}
-.hero{padding:69px 0 82px;background:radial-gradient(ellipse at 100% 0,#2f5035 0,#16291e 50%,#12241a 80%)}
+.hero{padding:69px 0 82px;background:linear-gradient(90deg,#12241afc 0%,#12241ae4 51%,#12241ac0 100%),url("https://images.pexels.com/photos/29216195/pexels-photo-29216195/free-photo-of-delicious-sliced-brisket-on-cutting-board.jpeg?auto=compress&dpr=1&h=750&w=1260") 73% 47%/cover no-repeat}
 .choice-box{background:var(--paper);color:var(--ink);max-width:810px;padding:27px;border:1px solid #efe2c6;box-shadow:0 25px 55px #0004}
 .box-title{font-weight:850;font-size:15px;margin:0 0 14px}
 .cuts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
@@ -118,6 +118,15 @@ h1{font:normal clamp(49px,7.5vw,94px)/1.01 Georgia,serif;letter-spacing:-.055em;
 .store-proof{margin-top:25px;padding:20px;border:1px solid #9ba58e;background:#314b36}.store-proof strong{display:block;color:#f0deb7;margin:12px 0 5px}.store-proof p{font-size:13px;color:#d5e2d4}
 @media(max-width:550px){.takeaway{padding:15px;margin:13px 0}.plan-download{font-size:12px}.real-handoff{font-size:12px;padding:13px}}
 @media print{header,.footer,.done-buttons,.plan-download,.handoff-limit{display:none!important}body,.done,.takeaway{background:white!important;color:black!important;box-shadow:none!important}.takeaway details>div{display:block!important}.plan-section{break-inside:avoid}}
+
+/* R5.4 original rights-sourced editorial photos, while preserving instructional vector diagrams */
+.hero-credit{color:#f3d8a8;text-decoration:underline;text-underline-offset:2px}
+.real-photo{border:1px solid #b5baaa;background:#ebe6dd;margin:0 0 18px;padding:7px}
+.real-photo img{width:100%;height:190px;object-fit:cover;object-position:50% 46%;display:block;filter:saturate(.88) contrast(1.03)}
+.real-photo figcaption{padding:9px 7px 5px;color:#4c5c4d;font-size:11px;line-height:1.55}
+.real-photo figcaption a{color:#315e42;text-decoration:underline;text-underline-offset:2px}
+@media(min-width:850px){.real-photo img{height:244px}}
+@media(max-width:550px){.hero{background-image:linear-gradient(90deg,#12241aee,#12241aca),url("https://images.pexels.com/photos/29216195/pexels-photo-29216195/free-photo-of-delicious-sliced-brisket-on-cutting-board.jpeg?auto=compress&dpr=1&h=750&w=1260");background-position:70% 40%}.real-photo img{height:156px}.real-photo{margin-bottom:12px}}
 </style>
 </head>
 <body>
@@ -135,7 +144,7 @@ h1{font:normal clamp(49px,7.5vw,94px)/1.01 Georgia,serif;letter-spacing:-.055em;
 <button type="button" class="cut" data-cut="flat" aria-pressed="false"><strong>Flat</strong><small>Более плоская и постная часть</small></button>
 <button type="button" class="cut" data-cut="point" aria-pressed="false"><strong>Point</strong><small>Более толстая и жирная часть</small></button>
 </div><button type="button" class="primary block" id="start">НАЧАТЬ →</button></div>
-<p class="note">Независимый демонстрационный пример, не инструкция по пищевой безопасности. Реальные нормы и материалы должен утвердить продавец.</p>
+<p class="note">Независимый демонстрационный пример, не инструкция по пищевой безопасности. Реальные нормы и материалы должен утвердить продавец. Фото готового мяса: <a class="hero-credit" href="https://www.pexels.com/photo/delicious-sliced-brisket-on-cutting-board-29216195/" target="_blank" rel="noopener noreferrer">Cord Allman / Pexels</a> — не продукт CarniStore.</p>
 </div></div>
 <div id="journey" class="wrap journey" hidden>
 <div class="j-head"><strong id="counter"></strong><div class="track"><span id="bar" style="width:0%"></span></div><button type="button" class="secondary" id="reset">Выбрать другой кусок</button></div>
@@ -143,6 +152,7 @@ h1{font:normal clamp(49px,7.5vw,94px)/1.01 Georgia,serif;letter-spacing:-.055em;
 <div class="kicker" id="cutName"></div>
 <h2 id="stepTitle" tabindex="-1"></h2><p class="j-lead" id="stepLead"></p>
 <div class="whole-task" id="wholeTask" hidden><div class="whole-task-title">ЧТО СДЕЛАТЬ СЕЙЧАС</div><ol id="wholeTaskList"></ol></div><div class="art" id="visual"></div>
+<figure id="realPhoto" class="real-photo" hidden><img id="realPhotoImg" loading="lazy" decoding="async" alt="" width="1260" height="750"><figcaption><span id="realPhotoCaption"></span> <a id="realPhotoCredit" target="_blank" rel="noopener noreferrer">Источник и автор</a></figcaption></figure>
 <p class="question" id="prompt"></p><div class="answers" id="options"></div>
 <div id="feedback" class="feedback" role="status" aria-live="polite" hidden></div>
 <div class="warn"><strong>ВАЖНО:</strong> <span id="safety"></span></div><a class="content-source" id="contentSource" rel="noopener noreferrer" target="_blank" hidden></a>
@@ -184,7 +194,7 @@ h1{font:normal clamp(49px,7.5vw,94px)/1.01 Georgia,serif;letter-spacing:-.055em;
 <p style="font-size:12px">События доступны как браузерный CustomEvent waslah:buyer_event. Автоматической отправки в аналитический сервис нет. Нет подтверждённого ROI, утверждённых фото или разрешения на коммерческую публикацию.</p>
 </div></section>
 </main>
-<footer class="footer"><div class="wrap">WASLAH R5.3 / ОТДЕЛЬНЫЙ КАНДИДАТ ДЛЯ OWNER · НЕ ОПУБЛИКОВАН · НЕ ОДОБРЕН CARNISTORE</div></footer>
+<footer class="footer"><div class="wrap">WASLAH R5.4 / ОТДЕЛЬНЫЙ КАНДИДАТ ДЛЯ OWNER · НЕ ОПУБЛИКОВАН · НЕ ОДОБРЕН CARNISTORE</div></footer>
 <script>
 'use strict';
 const el=id=>document.getElementById(id);
@@ -230,7 +240,22 @@ function renderCuts(){for(const b of document.querySelectorAll('[data-cut]'))b.s
 function setMode(mode){state.mode=mode;el('buyerScreen').hidden=mode!=='buyer';el('storeScreen').hidden=mode!=='store';el('buyerTab').setAttribute('aria-pressed',String(mode==='buyer'));el('storeTab').setAttribute('aria-pressed',String(mode==='store'));renderEvents();window.scrollTo(0,0)}
 function reset(){state.step=-1;state.selected=null;state.completed=false;state.passed.clear();el('welcome').hidden=false;el('journey').hidden=true;el('done').hidden=true;window.scrollTo(0,0)}
 function start(){state.session++;state.events.length=0;state.step=0;state.selected=null;state.completed=false;state.passed.clear();track('guide_open');el('welcome').hidden=true;el('journey').hidden=false;el('done').hidden=true;renderStep();window.scrollTo(0,0)}
-function renderStep(){const x=steps()[state.step];el('counter').textContent='ШАГ '+(state.step+1)+' ИЗ 5';el('bar').style.width=(state.step/5*100)+'%';el('stepTitle').textContent=x.title;el('stepLead').textContent=x.lead;el('cutName').textContent='ВАШ КУСОК: '+cutText[state.cut];el('visual').innerHTML=artMarkup(x);const task=el('wholeTask'),items=el('wholeTaskList');task.hidden=!Array.isArray(x.task);items.replaceChildren();for(const instruction of x.task||[]){const li=document.createElement('li');li.textContent=instruction;items.appendChild(li)}el('prompt').textContent=x.question;el('safety').textContent=x.safety;const citation=el('contentSource');citation.hidden=!x.sourceUrl;if(x.sourceUrl){citation.href=x.sourceUrl;citation.textContent='Источник для проверки редактором: '+x.source;}
+
+const R54_PHOTOS={
+ bark:{url:"https://images.pexels.com/photos/13068566/pexels-photo-13068566.jpeg?auto=compress&dpr=1&h=750&w=1260",credit:"https://www.pexels.com/photo/close-up-of-butcher-holding-meat-13068566/",author:"Andrés Góngora",caption:"После копчения: видны корочка и разрез готового брискета. Это НЕ момент заворачивания и не проверка безопасности.",alt:"Срез готового копчёного брискета с тёмной корочкой, который держат руками."},
+ slice:{url:"https://images.pexels.com/photos/36869208/pexels-photo-36869208/free-photo-of-close-up-of-sliced-barbecue-brisket-being-cut.jpeg?auto=compress&dpr=1&h=750&w=1260",credit:"https://www.pexels.com/photo/close-up-of-sliced-barbecue-brisket-being-cut-36869208/",author:"Bezalens JGP",caption:"Иллюстрация нарезки готового брискета. Направление волокон определяйте по схеме и на собственном куске.",alt:"Нарезка уже готового копчёного брискета на деревянной доске, рука в синей перчатке."}
+};
+function renderPhoto(artKey){
+ const entry=artKey.startsWith('bark')?R54_PHOTOS.bark:artKey.startsWith('rest')?R54_PHOTOS.slice:null;
+ const fig=el('realPhoto'),img=el('realPhotoImg');
+ fig.hidden=!entry;
+ if(!entry){img.removeAttribute('src');return;}
+ if(img.src!==entry.url)img.src=entry.url;
+ img.alt=entry.alt;el('realPhotoCaption').textContent=entry.caption+' ';
+ const link=el('realPhotoCredit');link.href=entry.credit;link.textContent=entry.author+' · Pexels';
+}
+
+function renderStep(){const x=steps()[state.step];el('counter').textContent='ШАГ '+(state.step+1)+' ИЗ 5';el('bar').style.width=(state.step/5*100)+'%';el('stepTitle').textContent=x.title;el('stepLead').textContent=x.lead;el('cutName').textContent='ВАШ КУСОК: '+cutText[state.cut];el('visual').innerHTML=artMarkup(x);renderPhoto(x.art);const task=el('wholeTask'),items=el('wholeTaskList');task.hidden=!Array.isArray(x.task);items.replaceChildren();for(const instruction of x.task||[]){const li=document.createElement('li');li.textContent=instruction;items.appendChild(li)}el('prompt').textContent=x.question;el('safety').textContent=x.safety;const citation=el('contentSource');citation.hidden=!x.sourceUrl;if(x.sourceUrl){citation.href=x.sourceUrl;citation.textContent='Источник для проверки редактором: '+x.source;}
 const answers=el('options');answers.replaceChildren();x.answers.forEach((text,i)=>{const b=document.createElement('button');b.type='button';b.className='answer';b.dataset.answer=String(i);b.setAttribute('aria-pressed',String(state.selected===i));const badge=document.createElement('span');badge.textContent=i===0?'А':'Б';b.append(badge,document.createTextNode(text));b.addEventListener('click',()=>choose(i));answers.appendChild(b)});
 const f=el('feedback');f.hidden=state.selected===null;f.className='feedback';if(state.selected!==null){const ok=state.selected===x.correct;f.classList.add(ok?'ok':'bad');f.textContent=ok?x.ok:x.wrong}
 el('next').disabled=state.selected!==x.correct;el('next').textContent=state.step===4?'ПОКАЗАТЬ РЕЗУЛЬТАТ →':'ДАЛЬШЕ →';el('back').textContent=state.step===0?'← К ВЫБОРУ':'← НАЗАД'}
