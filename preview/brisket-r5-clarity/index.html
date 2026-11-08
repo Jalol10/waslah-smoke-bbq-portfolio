@@ -68,6 +68,23 @@ h1{font:normal clamp(49px,7.5vw,94px)/1.01 Georgia,serif;letter-spacing:-.055em;
 @media(max-width:850px){.wrap{padding:0 18px}.store-cards{grid-template-columns:1fr}.hero{padding:48px 0 60px}.store{padding:45px 0}.store-card{padding:20px}}
 @media(max-width:550px){.header{flex-wrap:wrap;padding:15px 0;gap:14px}.tabs{width:100%}.tabs button{flex:1}.hero{padding:42px 0 55px}h1{font-size:clamp(52px,12.2vw,70px)}.lead{font-size:17px}.choice-box{padding:17px}.cuts{grid-template-columns:1fr;gap:7px}.cut{min-height:68px;display:flex;align-items:center;gap:15px;padding:11px 14px}.cut strong{margin:0;min-width:92px;font-size:27px}.cut small{font-size:12px}.journey{padding:23px 0 60px}.j-card{padding:21px 15px}.j-card h2{font-size:44px}.j-lead{font-size:16px}.art{padding:10px}.pack{grid-template-columns:1fr 22px 1fr;gap:4px}.packitem{padding:13px 8px}.packitem b{font-size:30px}.packitem label{font-size:9px}.versus{font-size:21px}.question{font-size:19px}.answer{font-size:14px;min-height:57px}.j-actions .primary{min-width:140px;flex:1}.done{margin:25px auto 55px;padding:25px 18px}.done-buttons{display:grid}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.track span{transition:none}}
+/* R5 first-action mobile fit: preserve clarity without hiding product choices */
+@media(max-width:550px){
+ .header{flex-wrap:nowrap;min-height:56px;padding:8px 0;gap:8px}
+ .brand{font-size:14px;letter-spacing:.055em}
+ .brand small{display:none}
+ .tabs{width:auto;flex:none;gap:4px}
+ .tabs button{padding:10px 8px;font-size:11px;min-height:44px;white-space:nowrap}
+ .hero{padding:23px 0 36px}
+ .hero h1{font-size:clamp(44px,11vw,55px);line-height:1.02;margin:12px 0 15px}
+ .hero .lead{font-size:16px;margin-bottom:17px;line-height:1.42}
+ .choice-box{padding:13px}
+ .cut{min-height:62px;padding:9px 11px}
+ .cut strong{font-size:25px}
+ .cut small{font-size:11.5px}
+ .primary.block{margin-top:10px}
+ .note{font-size:10.5px;line-height:1.45;margin-top:10px}
+}
 </style>
 </head>
 <body>
@@ -77,8 +94,8 @@ h1{font:normal clamp(49px,7.5vw,94px)/1.01 Georgia,serif;letter-spacing:-.055em;
 <section id="buyerScreen">
 <div id="welcome" class="hero"><div class="wrap">
 <div class="kicker">ПРОСТОЕ ОБУЧЕНИЕ ПОСЛЕ ПОКУПКИ</div>
-<h1>Купили брискет?<br><em>Начните отсюда.</em></h1>
-<p class="lead">Выберите свой кусок. За пять шагов узнаете, что проверить перед приготовлением и как нарезать.</p>
+<h1>Брискет дома?<br><em>Что дальше?</em></h1>
+<p class="lead">Выберите свой кусок и пройдите 5 простых проверок.</p>
 <div class="choice-box"><div class="box-title">Какой кусок указан на упаковке?</div>
 <div class="cuts" role="group" aria-label="Тип брискета">
 <button type="button" class="cut" data-cut="whole" aria-pressed="true"><strong>Whole</strong><small>Целая грудинка, две части</small></button>
