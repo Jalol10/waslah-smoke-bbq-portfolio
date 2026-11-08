@@ -1,0 +1,103 @@
+{
+  "schema": "WASLAH_BRISKET_BUYER_PILOT_EVENT_CONTRACT_R2",
+  "status": "PRIVATE_REVIEW_ONLY_NOT_LIVE_RETAILER_INTEGRATION",
+  "interface": {
+    "event_type": "CustomEvent",
+    "name": "waslah:buyer_event",
+    "dispatch_target": "window",
+    "listener": "window.addEventListener('waslah:buyer_event', event => { const record = event.detail; /* map only after retailer permission and privacy review */ });"
+  },
+  "version": "R2",
+  "common_fields": {
+    "event": {
+      "type": "enum",
+      "required": true
+    },
+    "cut": {
+      "type": "enum",
+      "values": [
+        "whole",
+        "flat",
+        "point"
+      ],
+      "required": true
+    },
+    "session_id": {
+      "type": "string",
+      "semantics": "Ephemeral local counter within the open page; not unique across browsers, sessions, or reloads. DO NOT use as customer ID.",
+      "required": true
+    },
+    "step": {
+      "type": "integer",
+      "semantics": "1-5; context of most recently viewed step",
+      "required": true
+    },
+    "at": {
+      "type": "ISO_8601_UTC_timestamp",
+      "required": true
+    }
+  },
+  "event_types": {
+    "guide_open": {
+      "meaning": "User intentionally opened a raw-cut guide",
+      "no_claim": "Not a purchase or proof of the purchased cut"
+    },
+    "module_complete": {
+      "meaning": "Specific stage viewed then navigated forward",
+      "fields": {
+        "module": "integer 1-5",
+        "meaning": "viewed_not_tested"
+      },
+      "no_claim": "No successful quiz or skill confirmation"
+    },
+    "guide_complete": {
+      "meaning": "User viewed all 5 stages",
+      "fields": {
+        "meaning": "all_stages_viewed_not_certified"
+      },
+      "no_claim": "No measured cooking competency or safe food preparation"
+    },
+    "product_handoff_click": {
+      "meaning": "Browser click on verified generic raw Beef Brisket product URL",
+      "fields": {
+        "destination": "https://carnistore.com/collections/all/products/brisket-whole",
+        "variant_selection": "manual"
+      },
+      "no_claim": "No verified selection, arrival, add-to-cart, order, revenue or checkout"
+    }
+  },
+  "pilot_metrics": {
+    "guide_starts": "Number of distinct ephemeral session IDs with guide_open in the current browser visit",
+    "five_stages_viewed": "Number of distinct session IDs with guide_complete in the current browser visit",
+    "outbound_click_sessions": "Number of distinct session IDs with product_handoff_click in the current browser visit",
+    "viewed_rate": "five_stages_viewed / guide_starts when denominator is nonzero",
+    "outbound_click_rate": "outbound_click_sessions / guide_starts when denominator is nonzero",
+    "actual_commerce_conversions": "NOT_CONNECTED",
+    "actual_revenue": "NOT_CONNECTED",
+    "business_uplift_or_support_savings": "NOT_MEASURED"
+  },
+  "privacy": {
+    "demo_transport": "In-memory only; no cookie, localStorage, network request, pixel or third-party analytics",
+    "demo_export": "Manual download WASLAH_R2_OBSERVED_EVENTS.json from the retailer preview",
+    "genuine_deployment_requirements": "Retailer-controlled consent/privacy basis, event identifier design, storage, access restrictions and host analytics integration",
+    "forbidden_claims": [
+      "User identities tracked",
+      "Checkout attribution",
+      "Order conversion lift",
+      "Compliance with UAE food-safety standards",
+      "Client acceptance"
+    ]
+  },
+  "product_links": {
+    "verified_retailer_url": "https://carnistore.com/collections/all/products/brisket-whole",
+    "verified_options": [
+      "1 Kg Point",
+      "1 Kg Flat",
+      "5-6 Kg Whole"
+    ],
+    "selection": "Manual on retailer website",
+    "variant_deep_link_status": "NOT_VERIFIED",
+    "separate_ready_to_eat_product": "Different from raw Brisket; NEVER use raw cooking guide"
+  },
+  "readiness": "Bounded client-side technical proof only. No public deployment, retailer approval or customer sales evidence."
+}
