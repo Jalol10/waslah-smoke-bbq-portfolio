@@ -1,0 +1,111 @@
+{
+  "version": "R5.4_VISUAL_RIGHTS_SHORTLIST_R1",
+  "project": "WASLAH SMOKE BBQ / Brisket Confidence Pilot",
+  "verified_on": "2026-11-08",
+  "scope": "PRIVATE OWNER REVIEW ONLY. Do not represent these photos as CarniStore products, approved cooking instructions, or endorsements.",
+  "licenses": [
+    {
+      "name": "Pexels License",
+      "url": "https://www.pexels.com/legal-pages/license/",
+      "status": "official policy reviewed",
+      "notes": "Free commercial website/app use; credit optional; no brand/person endorsement, standalone resale prohibited; check third-party rights where needed"
+    }
+  ],
+  "accepted": [
+    {
+      "role": "hero_finished_result_only",
+      "id": "PXL-29216195",
+      "author": "Cord Allman",
+      "photo_page": "https://www.pexels.com/photo/delicious-sliced-brisket-on-cutting-board-29216195/",
+      "image_url": "https://images.pexels.com/photos/29216195/pexels-photo-29216195/free-photo-of-delicious-sliced-brisket-on-cutting-board.jpeg?auto=compress&dpr=1&h=750&w=1260",
+      "local_name": "brisket_platter_cord_29216195.jpg",
+      "bytes": 68653,
+      "sha256": "AD2E1E351C8ED412CA37359B3FA43530E84C481010FB9FD6516F1D567C9CB355",
+      "accuracy": "Shows sliced cooked brisket, not a raw SKU or production safety claim",
+      "status": "shortlisted and visually inspected, not retailer-approved"
+    },
+    {
+      "role": "stage4_bark_after_cooking_reference_only",
+      "id": "PXL-13068566",
+      "author": "Andrés Góngora",
+      "photo_page": "https://www.pexels.com/photo/close-up-of-butcher-holding-meat-13068566/",
+      "image_url": "https://images.pexels.com/photos/13068566/pexels-photo-13068566.jpeg?auto=compress&dpr=1&h=750&w=1260",
+      "local_name": "smoked_bark_andres_13068566.jpg",
+      "bytes": 120320,
+      "sha256": "0021C7327B693249802C0EBB1F3FFA2D1A2F12DA5DD58560C142913844DBD198",
+      "accuracy": "Shows cooked brisket cross-section and bark after cooking; does NOT illustrate the smoker stage, wrap decision or tenderness test",
+      "status": "shortlisted and visually inspected, not retailer-approved"
+    },
+    {
+      "role": "stage5_slicing_visual_reference_only",
+      "id": "PXL-36869208",
+      "author": "Bezalens JGP",
+      "photo_page": "https://www.pexels.com/photo/close-up-of-sliced-barbecue-brisket-being-cut-36869208/",
+      "image_url": "https://images.pexels.com/photos/36869208/pexels-photo-36869208/free-photo-of-close-up-of-sliced-barbecue-brisket-being-cut.jpeg?auto=compress&dpr=1&h=750&w=1260",
+      "local_name": "brisket_slice_bezalens_36869208.jpg",
+      "bytes": 129861,
+      "sha256": "3AB9B80068757F68FC675751AB808A2EB0E28FF5700DDEEB0A8A4ACACD10F18B",
+      "accuracy": "Slicing of cooked brisket, not reliable as a cutting-angle/knife-safety tutorial. Keep authored grain diagram primary.",
+      "status": "shortlisted and visually inspected, not retailer-approved"
+    }
+  ],
+  "backups": [
+    {
+      "id": "PXL-12645502",
+      "author": "Gil Goldman",
+      "photo_page": "https://www.pexels.com/photo/slicing-brisket-12645502/",
+      "local_name": "brisket_slicing_gil_goldman_12645502.jpg",
+      "bytes": 105729,
+      "sha256": "87224F89DCA38C18B55079FA8F0B41E5D97E4098FEFE0182B64228653D802653",
+      "disposition": "backup only, appears more like indoor roast slicing than offset smoker tutorial"
+    }
+  ],
+  "rejected": [
+    {
+      "id": "PXL-8477064",
+      "author": "Los Muertos Crew",
+      "photo_page": "https://www.pexels.com/photo/person-slicing-a-raw-meat-8477064/",
+      "local_name": "raw_meat_prep_los_muertos_8477064.jpg",
+      "bytes": 93073,
+      "sha256": "602AB0D709F60D875E4C93BB74626BD3DB862791FC923660AC60F83F7B0C0BF8",
+      "reason": "Subject does not clearly resemble a brisket cut; risk of misleading Whole/Flat/Point identification."
+    },
+    {
+      "source": "Random retailer/brand product photos from image search",
+      "reason": "No established reuse permission; not authorized for a paid B2B demo."
+    }
+  ],
+  "still_required": [
+    {
+      "priority": "P0",
+      "asset": "Actual raw Whole, Flat and Point product/packaging photographs",
+      "owner": "Retailer or separately licensed professional photographer",
+      "reason": "Avoid generic imagery falsely identified as exact SKU"
+    },
+    {
+      "priority": "P0",
+      "asset": "Approved diagram/photo of probe position in actual meat and smoker chamber",
+      "owner": "WASLAH commissioned technical content after pitmaster/food safety validation",
+      "reason": "Generic pictures cannot prove correct sensing location"
+    },
+    {
+      "priority": "P1",
+      "asset": "Real offset-smoker firebox and stable combustion footage/stills",
+      "owner": "Rights-cleared specialist BBQ footage or original shoot",
+      "reason": "Illustrate exact equipment class and safety"
+    },
+    {
+      "priority": "P1",
+      "asset": "Bark before wrapping and actual butcher paper wrap stages",
+      "owner": "Rights-cleared original staged photos",
+      "reason": "Selected photo shows cooked cross-section, not live wrapping"
+    },
+    {
+      "priority": "P0",
+      "asset": "Safety approved cooking/hot holding instructions for UAE retailer",
+      "owner": "Retailer authorized safety reviewer",
+      "reason": "Not derivable from photography or generic manufacturer recipe"
+    }
+  ],
+  "release_constraints": "Do not publish externally, mail client, or claim buyer/safety/rights acceptance; review branch only. Images are generic editorial references and external Pexels CDN links should be locally packaged before an authorized production deployment."
+}
