@@ -360,7 +360,7 @@ function reset(){
  setMode("buyer");
 }
 function start(){
- state.step=0;state.session++;state.selected=null;state.completed=false;state.passed.clear();
+ state.step=0;state.session++;state.selected=null;state.completed=false;state.passed.clear();state.events.length=0;
  $("welcome").hidden=true;$("journey").hidden=false;$("done").hidden=true;
  track("guide_open",{meaning:"raw_cut_route_started"});renderStep();window.scrollTo(0,0);
 }
