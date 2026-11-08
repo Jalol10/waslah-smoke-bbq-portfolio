@@ -127,6 +127,23 @@ h1{font:normal clamp(49px,7.5vw,94px)/1.01 Georgia,serif;letter-spacing:-.055em;
 .real-photo figcaption a{color:#315e42;text-decoration:underline;text-underline-offset:2px}
 @media(min-width:850px){.real-photo img{height:244px}}
 @media(max-width:550px){.hero{background-image:linear-gradient(90deg,#12241aee,#12241aca),url("https://images.pexels.com/photos/29216195/pexels-photo-29216195/free-photo-of-delicious-sliced-brisket-on-cutting-board.jpeg?auto=compress&dpr=1&h=750&w=1260");background-position:70% 40%}.real-photo img{height:156px}.real-photo{margin-bottom:12px}}
+
+/* R5.5 original anatomy schematic; no unlicensed retail product photo */
+.cut-guide{margin-top:14px;border-top:1px solid #b7c5ad;padding-top:10px;color:#2f4a35}
+.cut-guide summary{cursor:pointer;padding:7px 3px;font-weight:800;font-size:13px;line-height:1.55;color:#234a30;min-height:44px;display:list-item}
+.cut-guide summary:focus-visible{outline:3px solid #547958;outline-offset:2px}
+.cut-guide-body{background:#e7e5d9;padding:10px 14px 12px;border:1px solid #c6c6b8}
+.cut-guide-body svg{width:100%;max-width:580px;height:auto;display:block;margin:0 auto}
+.cut-guide-choice{margin:5px 0 8px!important;font-size:15px!important;font-weight:800;color:#2e4b38!important;line-height:1.5!important}
+.cut-guide-warning{font-size:12px!important;line-height:1.5!important;color:#5e5f4b!important;margin:0 0 7px!important}
+.cut-guide-source{margin:0!important;font-size:11px!important;line-height:1.45!important;color:#5d665b!important}
+.cut-guide-source a{color:#2f6240;text-decoration:underline;text-underline-offset:2px}
+.cut-guide svg .flat-muscle,.cut-guide svg .point-muscle{transition:opacity .17s,filter .17s}
+.cut-guide[data-cut="flat"] .point-muscle{opacity:.25}
+.cut-guide[data-cut="point"] .flat-muscle{opacity:.25}
+.cut-guide[data-cut="flat"] .flat-muscle,.cut-guide[data-cut="point"] .point-muscle{filter:drop-shadow(0 1px 2px #58382666)}
+@media(prefers-reduced-motion:reduce){.cut-guide svg .flat-muscle,.cut-guide svg .point-muscle{transition:none}}
+@media(max-width:550px){.cut-guide{margin-top:10px;padding-top:8px}.cut-guide-body{padding:8px 9px 12px}.cut-guide-choice{font-size:13px!important}.cut-guide-warning{font-size:11px!important}}
 </style>
 </head>
 <body>
@@ -143,7 +160,34 @@ h1{font:normal clamp(49px,7.5vw,94px)/1.01 Georgia,serif;letter-spacing:-.055em;
 <button type="button" class="cut" data-cut="whole" aria-pressed="true"><strong>Whole</strong><small>Целая грудинка, две части</small></button>
 <button type="button" class="cut" data-cut="flat" aria-pressed="false"><strong>Flat</strong><small>Более плоская и постная часть</small></button>
 <button type="button" class="cut" data-cut="point" aria-pressed="false"><strong>Point</strong><small>Более толстая и жирная часть</small></button>
-</div><button type="button" class="primary block" id="start">НАЧАТЬ →</button></div>
+</div><button type="button" class="primary block" id="start">НАЧАТЬ →</button>
+<details id="cutGuide" class="cut-guide" data-cut="whole">
+<summary>Не знаете разницу между Whole, Flat и Point? Посмотреть схему</summary>
+<div class="cut-guide-body">
+<svg viewBox="0 0 620 266" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cutDiagramTitle cutDiagramDesc">
+<title id="cutDiagramTitle">Две основные мышцы брискета: плоская Flat и более толстая Point</title>
+<desc id="cutDiagramDesc">Схематическая проекция: удлинённая мышца Flat, а над частью одного конца лежит более толстая Point. Отрубы отличаются по форме и жирности. Не является фотографией или точной схемой разделки.</desc>
+<defs><linearGradient id="flatFill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ab5a50"/><stop offset="1" stop-color="#7c3835"/></linearGradient>
+<linearGradient id="pointFill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d48a68"/><stop offset="1" stop-color="#a55347"/></linearGradient></defs>
+<g class="flat-muscle">
+<path d="M51 129Q60 85 135 77L476 94Q566 102 570 153Q567 200 503 216L158 218Q68 210 51 129Z" fill="url(#flatFill)" stroke="#662c2b" stroke-width="5"/>
+<g fill="none" stroke="#dfb19a" stroke-opacity=".62" stroke-width="3" stroke-linecap="round"><path d="M91 153Q250 129 521 169"/><path d="M96 172Q258 150 518 188"/><path d="M120 189Q295 170 474 204"/></g>
+</g>
+<g class="point-muscle">
+<path d="M65 109Q97 37 210 48Q289 44 342 105Q362 149 291 165Q184 175 90 152Q62 140 65 109Z" fill="url(#pointFill)" stroke="#774439" stroke-width="5"/>
+<g fill="#f2dcc6" opacity=".65"><ellipse cx="141" cy="90" rx="19" ry="5" transform="rotate(-28 141 90)"/><ellipse cx="205" cy="77" rx="24" ry="6" transform="rotate(17 205 77)"/><ellipse cx="265" cy="112" rx="17" ry="6" transform="rotate(-15 265 112)"/><ellipse cx="174" cy="136" rx="28" ry="6" transform="rotate(13 174 136)"/></g>
+</g>
+<path d="M100 160Q222 188 316 144" fill="none" stroke="#e3cfad" stroke-width="4" stroke-dasharray="7 8" stroke-linecap="round" opacity=".84"/>
+<g font-family="Arial, sans-serif" font-size="20" font-weight="800">
+<text x="159" y="28" fill="#493b2d">POINT</text><path d="M199 34L209 64" stroke="#5d4b39" stroke-width="2"/>
+<text x="431" y="252" fill="#493b2d">FLAT</text><path d="M459 231L462 206" stroke="#5d4b39" stroke-width="2"/>
+</g>
+</svg>
+<p class="cut-guide-choice" id="cutGuideInfo" aria-live="polite">Whole: обе части вместе, отдельная Point частично перекрывает Flat.</p>
+<p class="cut-guide-warning">Условная схема анатомии, <strong>не реальный товар CarniStore</strong>. Формы и способ разделки отличаются. Тип и состояние продукта проверяйте по упаковке и у продавца, а не только по рисунку.</p>
+<p class="cut-guide-source">Научная основа: <a href="https://meat.tamu.edu/120-beef-brisket-deckle-off-boneless/" target="_blank" rel="noopener noreferrer">Texas A&amp;M Meat Science</a>.</p>
+</div>
+</details></div>
 <p class="note">Независимый демонстрационный пример, не инструкция по пищевой безопасности. Реальные нормы и материалы должен утвердить продавец. Фото готового мяса: <a class="hero-credit" href="https://www.pexels.com/photo/delicious-sliced-brisket-on-cutting-board-29216195/" target="_blank" rel="noopener noreferrer">Cord Allman / Pexels</a> — не продукт CarniStore.</p>
 </div></div>
 <div id="journey" class="wrap journey" hidden>
@@ -194,7 +238,7 @@ h1{font:normal clamp(49px,7.5vw,94px)/1.01 Georgia,serif;letter-spacing:-.055em;
 <p style="font-size:12px">События доступны как браузерный CustomEvent waslah:buyer_event. Автоматической отправки в аналитический сервис нет. Нет подтверждённого ROI, утверждённых фото или разрешения на коммерческую публикацию.</p>
 </div></section>
 </main>
-<footer class="footer"><div class="wrap">WASLAH R5.4 / ОТДЕЛЬНЫЙ КАНДИДАТ ДЛЯ OWNER · НЕ ОПУБЛИКОВАН · НЕ ОДОБРЕН CARNISTORE</div></footer>
+<footer class="footer"><div class="wrap">WASLAH R5.5 / ОТДЕЛЬНЫЙ КАНДИДАТ ДЛЯ OWNER · НЕ ОПУБЛИКОВАН · НЕ ОДОБРЕН CARNISTORE</div></footer>
 <script>
 'use strict';
 const el=id=>document.getElementById(id);
@@ -236,7 +280,16 @@ if(x.art==='grain'||x.art==='slice')return '<svg role="img" aria-label="Длин
 if(x.art==='trim')return '<div class="art-split"><div><strong>Ничего лишнего</strong><small>Не режьте без необходимости.</small></div><div><strong>Слишком много срезали</strong><small>Часть продукта потеряна.</small></div></div>';
 return '<div class="art-split"><div><strong>Воздух смокера</strong><small>Датчик температуры в камере.</small></div><div><strong>Внутри мяса</strong><small>Отдельный пищевой щуп.</small></div></div>';
 }
-function renderCuts(){for(const b of document.querySelectorAll('[data-cut]'))b.setAttribute('aria-pressed',String(b.dataset.cut===state.cut))}
+function renderCuts(){
+ for(const b of document.querySelectorAll('[data-cut]'))b.setAttribute('aria-pressed',String(b.dataset.cut===state.cut));
+ el('cutGuide').dataset.cut=state.cut;
+ const choices={
+ whole:'Whole: две основные мышцы вместе. Point частично перекрывает более длинную Flat.',
+ flat:'Flat: обычно длиннее, ровнее по толщине и постнее. Это отдельная часть Whole.',
+ point:'Point: обычно толще, жирнее и неровнее по форме. Частично перекрывает Flat в Whole.'
+ };
+ el('cutGuideInfo').textContent=choices[state.cut];
+}
 function setMode(mode){state.mode=mode;el('buyerScreen').hidden=mode!=='buyer';el('storeScreen').hidden=mode!=='store';el('buyerTab').setAttribute('aria-pressed',String(mode==='buyer'));el('storeTab').setAttribute('aria-pressed',String(mode==='store'));renderEvents();window.scrollTo(0,0)}
 function reset(){state.step=-1;state.selected=null;state.completed=false;state.passed.clear();el('welcome').hidden=false;el('journey').hidden=true;el('done').hidden=true;window.scrollTo(0,0)}
 function start(){state.session++;state.events.length=0;state.step=0;state.selected=null;state.completed=false;state.passed.clear();track('guide_open');el('welcome').hidden=true;el('journey').hidden=false;el('done').hidden=true;renderStep();window.scrollTo(0,0)}
