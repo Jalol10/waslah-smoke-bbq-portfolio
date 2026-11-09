@@ -267,6 +267,21 @@ h1{font:normal clamp(49px,7.5vw,94px)/1.01 Georgia,serif;letter-spacing:-.055em;
 #storeScreen .store-summary .pilot-proof p{color:#294630}
 #storeScreen .store-summary .pilot-proof .pilot-no-sales strong{color:#88412c}
 #storeScreen .store-summary > .retailer-term{color:#d6e4ce!important}
+
+/* EN R4 P0 safety-before-navigation and five original practical educational diagrams */
+.j-actions,.j-actions.primary,.j-card .j-actions{
+ position:static!important;bottom:auto!important;z-index:auto!important;
+ margin:20px 0 0!important;padding:16px 0 0!important;
+ background:transparent!important;box-shadow:none!important;border-top:1px solid #9eaf9f;
+}
+.j-card .safety-stop{margin:14px 0 17px!important;display:block}
+.instruction-figure{margin:0;background:#f5f2e9;padding:0;border:1px solid #b1c0ae}
+.instruction-figure svg{width:100%;max-width:540px;height:auto;display:block;margin:0 auto}
+.instruction-figure figcaption{background:#edf0e6;color:#3a5a41;padding:10px 11px;font-size:12px;line-height:1.45;border-top:1px solid #c4cfbd}
+.instruction-ribbon{display:flex;gap:5px;margin-top:9px;flex-wrap:wrap}
+.instruction-ribbon span{flex:1 1 90px;display:flex;gap:5px;align-items:center;background:#264635;color:#f7efe0;padding:10px 7px;min-height:45px;font-size:10px;line-height:1.25;font-weight:800;overflow-wrap:anywhere}
+.instruction-ribbon b{color:#e9c888;font-size:10px}
+@media(max-width:550px){.art{padding:7px}.instruction-figure figcaption{font-size:11px}.instruction-ribbon span{font-size:9px;padding:9px 5px}.j-card .j-actions{gap:9px!important}.j-card .j-actions button{min-height:49px}}
 </style>
 </head>
 <body>
@@ -320,13 +335,13 @@ h1{font:normal clamp(49px,7.5vw,94px)/1.01 Georgia,serif;letter-spacing:-.055em;
 <div class="journey-label"><strong>YOUR PRACTICAL GUIDE</strong><span>Read the actions and stop conditions. Continue when you understand the step; the self-check is optional.</span></div>
 <div class="kicker" id="cutName"></div><h2 id="stepTitle" tabindex="-1"></h2><p class="j-lead" id="stepLead"></p>
 <div class="whole-task" id="wholeTask"><div class="whole-task-title">WHAT TO DO NOW</div><ol id="wholeTaskList"></ol></div>
+<div class="warn safety-stop" role="note"><strong>WHEN TO STOP:</strong> <span id="safety"></span></div>
 <div class="art" id="visual"></div>
 <details class="optional-quiz" id="selfCheck"><summary>Check your understanding · optional</summary><div class="optional-body">
 <p class="question" id="prompt"></p><div class="answers" id="options"></div><div class="feedback" id="feedback" role="status" aria-live="polite" hidden></div>
 </div></details>
 <figure class="preview-photo" id="realPhoto" hidden><img id="realPhotoImg" alt="" width="1260" height="750" loading="lazy" decoding="async"><figcaption><span id="realPhotoCaption"></span> <a id="realPhotoCredit" target="_blank" rel="noopener noreferrer"></a></figcaption></figure>
 <details class="field-guide" id="fieldGuide" hidden><summary id="fieldGuideTitle"></summary><div class="details-body"><ol id="fieldGuideSteps"></ol><p id="fieldGuideWhy"></p><p id="fieldGuideSources"></p></div></details>
-<div class="warn safety-stop" role="note"><strong>WHEN TO STOP:</strong> <span id="safety"></span></div>
 <a class="content-source" id="contentSource" target="_blank" rel="noopener noreferrer" hidden></a>
 <div class="j-actions"><button type="button" id="back" class="secondary">← BACK</button><button type="button" id="next" class="primary">STEP 2 OF 5 →</button></div>
 </div></div>
@@ -361,7 +376,7 @@ h1{font:normal clamp(49px,7.5vw,94px)/1.01 Georgia,serif;letter-spacing:-.055em;
 </div>
 <button type="button" id="tryBuyer" class="primary">TRY BUYER EXPERIENCE →</button>
 <section class="pilot-proof" aria-label="Local event measurement proof">
-<div class="pilot-tag">LIVE BROWSER PROOF · NOT RETAILER ANALYTICS</div>
+<div class="pilot-tag">LOCAL DEMO COUNTERS · NOT CUSTOMER DATA</div>
 <h2>What can a retailer actually measure?</h2>
 <p>Take the buyer journey, then return here. These counters reflect real clicks on this local page, not customer purchases or fabricated sales.</p>
 <div class="pilot-kpis"><div><strong id="pilotStarts">0</strong><span>Guide starts</span></div><div><strong id="pilotViewed">0</strong><span>Five steps viewed</span></div><div><strong id="pilotClicks">0</strong><span>Product-link click sessions</span></div></div>
@@ -451,9 +466,67 @@ function start(){
  track("guide_open",{meaning:"raw_cut_route_started"});renderStep();window.scrollTo(0,0);
 }
 function visualCards(items){
- const root=$("visual");root.replaceChildren();const outer=document.createElement("div");outer.className="step-visual";outer.setAttribute("aria-label","Visual summary of this step");
- items.forEach((t,i)=>{const cell=document.createElement("div"),num=document.createElement("span"),txt=document.createElement("strong");num.textContent="0"+(i+1);txt.textContent=t;cell.append(num,txt);outer.appendChild(cell)});
- root.appendChild(outer);
+ // Five original explanatory SVG illustrations. Not product/SKU photos, butchery diagrams or food-safety certifications.
+ const root=$("visual");root.replaceChildren();
+ const cut=CUT_LABEL[state.cut],step=state.step;
+ const svgStart=(title)=>'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 270" role="img" aria-label="'+title+'" focusable="false"><title>'+title+'</title><rect x="1" y="1" width="538" height="268" fill="#f5f2e9" stroke="#b5c4b3" stroke-width="2"/>';
+ const svgEnd='</svg>';
+ const meat='<path d="M82 121Q116 72 211 74L380 103Q456 115 445 170Q432 208 323 211L151 209Q63 189 82 121Z" fill="#ae6a5e" stroke="#753d37" stroke-width="4"/>';
+ let svg='',caption='';
+ if(step===0){
+  svg=svgStart('Verify RAW '+cut+' on the package, not from a cooked meat photo')+
+   '<rect x="60" y="34" width="270" height="203" rx="13" fill="#e7e1d1" stroke="#6b7967" stroke-width="4"/><path d="M78 56H313" stroke="#98ad95" stroke-width="6"/>'+
+   '<rect x="85" y="83" width="220" height="118" rx="4" fill="#fffefa" stroke="#c1cbb9" stroke-width="2"/>'+
+   '<text x="107" y="119" font-size="31" font-weight="900" fill="#315742">RAW</text>'+
+   '<text x="107" y="154" font-size="28" font-weight="900" fill="#263e2e">'+cut.toUpperCase()+'</text>'+
+   '<text x="107" y="178" font-size="16" fill="#506351">CHECK LABEL</text>'+
+   '<path d="M344 147l35 28 62-77" fill="none" stroke="#42764f" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>'+
+   '<text x="347" y="220" font-size="18" font-weight="900" fill="#315742">MATCH ORDER</text>'+svgEnd;
+  caption='01 / Identity check: illustration only. The retailer package and exact order are the authority.';
+ }else if(step===1){
+  svg=svgStart('Parallel muscle fibers show grain direction before cooking')+
+   '<rect x="34" y="40" width="472" height="184" rx="14" fill="#c57b64" stroke="#824738" stroke-width="4"/>'+
+   '<g stroke="#f1b89e" stroke-width="5" stroke-linecap="round" fill="none"><path d="M65 76Q180 68 290 80T471 75"/><path d="M65 105Q190 98 284 110T471 104"/><path d="M65 138Q191 130 285 144T471 136"/><path d="M65 172Q170 164 298 177T471 170"/><path d="M65 197Q172 187 285 202T471 196"/></g>'+
+   '<path d="M87 54H339" stroke="#254b35" stroke-width="7" stroke-linecap="round"/><path d="M339 54l-18-12v24Z" fill="#254b35"/>'+
+   '<rect x="342" y="35" width="148" height="34" rx="3" fill="#f9f4e7"/><text x="352" y="59" font-size="19" font-weight="900" fill="#284a35">GRAIN →</text>'+
+   '<rect x="164" y="229" width="218" height="27" rx="3" fill="#f7f4ea"/><text x="176" y="249" font-size="15" fill="#385f45">PHOTO IF VISIBLE</text>'+svgEnd;
+  caption='02 / Look for parallel muscle fibers. If grain is unclear, do not infer it from a fat streak.';
+ }else if(step===2){
+  const badge=state.cut==="whole"?"CHECK, THEN SKIP IF CLEAR":"WHOLE TRIM: SKIP";
+  svg=svgStart('Trim inspection only; Whole-only knife work is not required for portioned cuts')+meat+
+   '<path d="M341 116Q377 104 417 138" stroke="#f7d9a5" stroke-width="5" fill="none" stroke-dasharray="10 8"/>'+
+   '<path d="M373 92L425 57" stroke="#3a5c40" stroke-width="5"/><circle cx="373" cy="92" r="7" fill="#3a5c40"/>'+
+   '<rect x="70" y="25" width="386" height="43" rx="5" fill="#294d38"/>'+
+   '<text x="89" y="53" font-size="21" font-weight="900" fill="#f4ecdc">'+badge+'</text>'+
+   '<rect x="137" y="230" width="268" height="28" fill="#f7f4ea"/><text x="149" y="250" font-size="16" fill="#385f45">NOT A CUTTING TEMPLATE</text>'+svgEnd;
+  caption=state.cut==="whole"?'03 / Inspect Whole first. No clear target = no knife work. Diagram does not specify a cut line.':'03 / This is a pre-portioned '+cut+'; the Whole-packer trimming procedure is not applicable.';
+ }else if(step===3){
+  svg=svgStart('Measure smoker air and internal meat with two separate probes')+
+   '<rect x="36" y="47" width="468" height="180" rx="11" fill="#2b4633" stroke="#183124" stroke-width="6"/>'+
+   '<rect x="66" y="165" width="400" height="13" rx="5" fill="#a4b39a"/>'+
+   '<path d="M143 173Q170 110 268 129Q369 135 385 173Z" fill="#b77867" stroke="#edba9c" stroke-width="4"/>'+
+   '<path d="M130 77V155" stroke="#e4c280" stroke-width="6"/><circle cx="130" cy="145" r="9" fill="#e4c280"/>'+
+   '<path d="M367 77L300 160" stroke="#f1d8bd" stroke-width="6"/><circle cx="300" cy="160" r="9" fill="#f1d8bd"/>'+
+   '<text x="62" y="34" font-size="21" font-weight="900" fill="#2b5139">CHAMBER AIR</text>'+
+   '<text x="307" y="34" font-size="21" font-weight="900" fill="#2b5139">MEAT CORE</text>'+
+   '<rect x="116" y="232" width="311" height="28" rx="3" fill="#e4ecdf"/><text x="133" y="251" font-size="16" fill="#2e543a">TWO DIFFERENT READINGS</text>'+svgEnd;
+  caption='04 / Placement is schematic. Use actual smoker and probe instructions; do not treat bark as a safety test.';
+ }else{
+  svg=svgStart('Slice perpendicular to the direction of muscle fibers, after safe controlled rest')+
+   '<rect x="41" y="44" width="460" height="180" rx="12" fill="#b76d5d" stroke="#83483c" stroke-width="4"/>'+
+   '<g stroke="#f6baa0" stroke-width="4" stroke-linecap="round"><path d="M60 89Q240 83 477 89"/><path d="M60 117Q245 111 478 117"/><path d="M60 145Q250 139 478 145"/><path d="M60 173Q240 167 478 173"/><path d="M60 201Q245 195 478 201"/></g>'+
+   '<path d="M91 66H350" stroke="#244b35" stroke-width="7"/><path d="M350 66l-18-12v24Z" fill="#244b35"/>'+
+   '<rect x="367" y="50" width="116" height="31" fill="#f5f0e6"/><text x="378" y="72" font-size="16" font-weight="900" fill="#2e543b">GRAIN →</text>'+
+   '<path d="M200 95V206M255 95V206M310 95V206" stroke="#f3e5ba" stroke-width="5" stroke-dasharray="10 8"/>'+
+   '<path d="M255 105v88" stroke="#20452e" stroke-width="7"/><path d="M255 193l-12-19h24Z" fill="#20452e"/>'+
+   '<rect x="151" y="230" width="274" height="29" fill="#f5f2e7"/><text x="169" y="251" font-size="16" fill="#2d5339">CUT ↓ ACROSS FIBERS</text>'+svgEnd;
+  caption='05 / Example orientation only. Re-find the actual cooked grain and confirm safe rest before cutting.';
+ }
+ const figure=document.createElement("figure");figure.className="instruction-figure";figure.innerHTML=svg;
+ const cp=document.createElement("figcaption");cp.textContent=caption;figure.appendChild(cp);root.appendChild(figure);
+ const ribbon=document.createElement("div");ribbon.className="instruction-ribbon";
+ items.forEach((t,i)=>{const chip=document.createElement("span");const num=document.createElement("b");num.textContent="0"+(i+1);chip.append(num,document.createTextNode(" "+t));ribbon.appendChild(chip)});
+ root.appendChild(ribbon);
 }
 function photoForStep(){
  const p=state.step===3?PHOTO.bark:state.step===4?PHOTO.slice:null,fig=$("realPhoto"),img=$("realPhotoImg");
@@ -472,7 +545,7 @@ function detailForStep(){
  for(const [title,url] of detail.links){const a=document.createElement("a");a.textContent=title;a.href=url;a.target="_blank";a.rel="noopener noreferrer";p.appendChild(a)}
 }
 function renderStep(){
- const x=DATA[state.cut][state.step];$("counter").textContent="STEP "+(state.step+1)+" OF 5";$("bar").style.width=(state.step/5*100)+"%";
+ const x=DATA[state.cut][state.step];$("counter").textContent="STEP "+(state.step+1)+" OF 5";$("bar").style.width=((state.step+1)/5*100)+"%";
  $("stepTitle").textContent=x.title;$("stepLead").textContent=x.lead;$("cutName").textContent="YOUR RAW CUT: "+CUT_LABEL[state.cut];
  const list=$("wholeTaskList");list.replaceChildren();for(const action of x.task){const li=document.createElement("li");li.textContent=action;list.appendChild(li)}
  visualCards(x.visual);$("selfCheck").open=false;$("prompt").textContent=x.question;
