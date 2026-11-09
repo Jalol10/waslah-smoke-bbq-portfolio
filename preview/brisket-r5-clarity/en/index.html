@@ -291,6 +291,11 @@ h1{font:normal clamp(49px,7.5vw,94px)/1.01 Georgia,serif;letter-spacing:-.055em;
 .grain-choices button[aria-pressed=true]{background:#244c35;color:#fff9eb;border-color:#244c35}
 .grain-record #grainFeedback{margin:12px 0 0;font-size:12px}
 @media(max-width:550px){.grain-choices{grid-template-columns:1fr}}
+/* R4.2: cut-safe retailer handoff; no guessed Shopify variant IDs */
+.size-verify{margin:17px 0;padding:16px 18px;background:#f1e7c9;border:2px solid #92703d;color:#263d2c}
+.size-verify strong{display:block;font-size:18px;line-height:1.35;color:#223c29}
+.size-verify p{margin:8px 0 0;font-size:14px;line-height:1.5;color:#324937}
+@media(max-width:550px){.size-verify{padding:14px}.size-verify strong{font-size:17px}}
 </style>
 </head>
 <body>
@@ -372,6 +377,7 @@ h1{font:normal clamp(49px,7.5vw,94px)/1.01 Georgia,serif;letter-spacing:-.055em;
 <details id="planDetails"><summary>View all actions</summary><div id="planBody"></div></details>
 <p class="plan-limit">Requires applicable food-safety rules, approved holding temperatures and specific smoker instructions. No one-size-fits-all cooking certification.</p>
 <p id="planFeedback" role="status" aria-live="polite" hidden></p></section>
+<div class="size-verify" role="note" id="sizeVerify"><strong id="sizeVerifyTitle"></strong><p id="sizeVerifyText"></p></div>
 <div class="done-buttons"><a class="primary real-handoff" id="productExample" href="https://carnistore.com/collections/all/products/brisket-whole" target="_blank" rel="noopener noreferrer">SEE RAW BRISKET OPTIONS ↗</a><button type="button" class="primary" id="toStore">Retailer value →</button></div>
 <p class="product-note" id="handoffNote">External link to CarniStore's raw product; manually select the matching Whole, Flat or Point option. No retailer integration or endorsement.</p>
 <div class="warn">Before actual cooking, verify your equipment and applicable local safety rules with an authorized source.</div>
@@ -452,6 +458,7 @@ function exportPilot(){
 }
 window.WASLAH_PILOT_PROOF=Object.freeze({version:"R2",snapshot:()=>({totals:pilotMetrics(),events:PILOT_EVENTS.map(e=>({...e}))})});
 const CUT_LABEL={whole:"Whole",flat:"Flat",point:"Point"};
+const SHOP_SIZE={whole:"5-6 Kg",flat:"1 Kg Flat",point:"1 Kg Point"};
 const PHOTO={
   bark:{url:"https://images.pexels.com/photos/13068566/pexels-photo-13068566.jpeg?auto=compress&dpr=1&h=750&w=1260",source:"https://www.pexels.com/photo/close-up-of-butcher-holding-meat-13068566/",author:"Andrés Góngora · Pexels",caption:"Photo of a cooked brisket cross-section: not the wrapping moment or evidence of safe cooking."},
   slice:{url:"https://images.pexels.com/photos/36869208/pexels-photo-36869208/free-photo-of-close-up-of-sliced-barbecue-brisket-being-cut.jpeg?auto=compress&dpr=1&h=750&w=1260",source:"https://www.pexels.com/photo/close-up-of-sliced-barbecue-brisket-being-cut-36869208/",author:"Bezalens JGP · Pexels",caption:"Illustration of slicing cooked brisket, not an exact grain-angle or knife-safety instruction."}
@@ -615,7 +622,11 @@ function renderPlan(){
   wrap.appendChild(section);
  });
  $("planDetails").open=false;$("planFeedback").hidden=true;
- $("handoffNote").textContent="Independent external raw-product page. Select the matching "+CUT_LABEL[state.cut]+" option manually on CarniStore's website. No buyer endorsement, deep-link variant selection, or connected sales analytics.";
+ const size=SHOP_SIZE[state.cut];
+ $("sizeVerifyTitle").textContent="Your chosen cut: "+CUT_LABEL[state.cut];
+ $("sizeVerifyText").textContent="On the retailer page, set Size to "+size+" before adding to cart. This link does NOT preselect a variant: a different size may already be selected. Verify the actual product and price."; 
+ $("productExample").textContent="OPEN CARNISTORE — SELECT "+size.toUpperCase()+" ↗";
+ $("handoffNote").textContent="External raw brisket listing: manually verify Size = "+size+". CarniStore has not endorsed this independent demo; no live SKU integration, stock guarantee, sales analytics or purchase attribution.";
 }
 function downloadPlan(){
  if(!state.completed)return;
