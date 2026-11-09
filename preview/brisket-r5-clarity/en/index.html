@@ -282,6 +282,15 @@ h1{font:normal clamp(49px,7.5vw,94px)/1.01 Georgia,serif;letter-spacing:-.055em;
 .instruction-ribbon span{flex:1 1 90px;display:flex;gap:5px;align-items:center;background:#264635;color:#f7efe0;padding:10px 7px;min-height:45px;font-size:10px;line-height:1.25;font-weight:800;overflow-wrap:anywhere}
 .instruction-ribbon b{color:#e9c888;font-size:10px}
 @media(max-width:550px){.art{padding:7px}.instruction-figure figcaption{font-size:11px}.instruction-ribbon span{font-size:9px;padding:9px 5px}.j-card .j-actions{gap:9px!important}.j-card .j-actions button{min-height:49px}}
+/* R4.1: optional first-hand observation of muscle grain, no photo upload */
+.grain-record{margin:16px 0;padding:16px;background:#eef2e8;color:#233f2c;border:1px solid #779582}
+.grain-record strong{display:block;font-size:15px}
+.grain-record p{font-size:13px;line-height:1.5;margin:7px 0 12px}
+.grain-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.grain-choices button{min-height:52px;padding:11px;background:#fffdf5;border:2px solid #728e78;color:#233f2c;font-size:13px;font-weight:800;line-height:1.35;text-align:left}
+.grain-choices button[aria-pressed=true]{background:#244c35;color:#fff9eb;border-color:#244c35}
+.grain-record #grainFeedback{margin:12px 0 0;font-size:12px}
+@media(max-width:550px){.grain-choices{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -335,6 +344,15 @@ h1{font:normal clamp(49px,7.5vw,94px)/1.01 Georgia,serif;letter-spacing:-.055em;
 <div class="journey-label"><strong>YOUR PRACTICAL GUIDE</strong><span>Read the actions and stop conditions. Continue when you understand the step; the self-check is optional.</span></div>
 <div class="kicker" id="cutName"></div><h2 id="stepTitle" tabindex="-1"></h2><p class="j-lead" id="stepLead"></p>
 <div class="whole-task" id="wholeTask"><div class="whole-task-title">WHAT TO DO NOW</div><ol id="wholeTaskList"></ol></div>
+<section id="grainRecord" class="grain-record" aria-label="Optional real-world grain observation" hidden>
+<strong>What can you see on YOUR raw cut?</strong>
+<p>Look at exposed lean muscle, not white fat seams. This records your own observation; it cannot verify a slicing angle.</p>
+<div class="grain-choices" role="group" aria-label="Observed muscle fibers">
+<button type="button" data-grain="visible" aria-pressed="false">I can see 2–3 parallel muscle fibers</button>
+<button type="button" data-grain="unclear" aria-pressed="false">I cannot confidently identify grain</button>
+</div>
+<p id="grainFeedback" role="status" aria-live="polite">Not recorded. Re-check the cooked fibers before slicing.</p>
+</section>
 <div class="warn safety-stop" role="note"><strong>WHEN TO STOP:</strong> <span id="safety"></span></div>
 <div class="art" id="visual"></div>
 <details class="optional-quiz" id="selfCheck"><summary>Check your understanding · optional</summary><div class="optional-body">
@@ -398,7 +416,7 @@ const DATA={"whole":[{"title":"1. Verify your delivery","lead":"Whole brisket in
 const DETAILS={"3":{"title":"Whole-only trim: target before knife","steps":["Check the already cleaned-and-trimmed Whole on a clean, non-slipping board. If no clear loose flap or hard protruding fat is visible, skip further trimming.","When a single small correction is clearly justified and safe, keep the free hand outside the knife path and use short controlled shallow cuts away from your body.","Reinspect after each change and stop if the purpose of the next cut is unclear; do not rinse raw beef."],"why":"This is a Whole-only inspection and cautious correction, not mandatory knife work.","links":[["FoodSafety.gov — hygiene and cross-contamination","https://www.foodsafety.gov/keep-food-safe/4-steps-to-food-safety"],["CarniStore raw brisket description","https://carnistore.com/collections/all/products/brisket-whole"]]},"4":{"title":"Smoker setup, bark, stall and tenderness","steps":["Follow the smoker manufacturer's safe setup. Measure chamber air near grate level and internal meat temperature using separate working probes.","Watch bark and the temperature trend. Stall can happen, but first verify the chamber is stable; do not raise heat uncontrollably.","Wrapping is an optional technique choice, never proof of safety. Apply locally approved cooking requirements and separately probe for tenderness."],"why":"No universal firebox setting or pull temperature is certified for CarniStore/UAE by this independent concept.","links":[["USDA FSIS — smoker thermometers","https://ask.fsis.usda.gov/article/Do-you-need-a-thermometer-when-smoking-meat"],["Traeger — brisket method","https://www.traeger.com/learn/how-to-smoked-brisket"]]},"5":{"title":"Controlled rest and cross-grain slicing","steps":["Verify safe cooking and use an approved hot-holding or cooling method during rest; do not assume an unmonitored container is safe.","Use a pre-cook grain photo only as a clue. Locate real cooked muscle fibers just before slicing.","Cut across current fibers, inspect a test slice, and find the new grain whenever changing muscles."],"why":"An appealing slice is a quality result, not proof of food safety.","links":[["Traeger — slicing across grain","https://www.traeger.com/learn/how-to-slice-brisket"],["USDA FSIS — use food thermometers","https://ask.fsis.usda.gov/article/Do-you-need-a-thermometer-when-smoking-meat"]]}};
 const PART_TRIM_R3={"flat":{"title":"Flat portion: Whole trim step is skipped","steps":["The contracted Whole-packer trimming operation is not part of this Flat portion route.","If no clear knife target exists, preserve the meat; do not remove fat or lean tissue to match a stock photo.","If a delivered portion requires more than a simple check, obtain product-specific preparation guidance."],"why":"The five-module navigation retains a visible explanation of why Whole-only trimming is skipped.","links":[["CarniStore raw brisket options","https://carnistore.com/collections/all/products/brisket-whole"],["FoodSafety.gov — raw meat hygiene","https://www.foodsafety.gov/keep-food-safe/4-steps-to-food-safety"]]},"point":{"title":"Point portion: Whole trim step is skipped","steps":["The contracted Whole-packer trimming operation is not part of this Point portion route.","Fat seams may be normal; avoid blindly trimming white tissue just to match an image.","If the delivered portion seems to require serious trimming, stop and obtain specific guidance."],"why":"This section intentionally skips Whole trimming instead of inventing a portion procedure.","links":[["CarniStore raw brisket options","https://carnistore.com/collections/all/products/brisket-whole"],["FoodSafety.gov — raw meat hygiene","https://www.foodsafety.gov/keep-food-safe/4-steps-to-food-safety"]]}};
 function practicalDetail(step,cut){return step===3&&cut!=='whole'?PART_TRIM_R3[cut]:DETAILS[step]}
-const state={cut:"whole",step:-1,selected:null,events:[],passed:new Set(),session:0,completed:false};
+const state={cut:"whole",step:-1,selected:null,events:[],passed:new Set(),session:0,completed:false,grainObservation:null};
 window.WASLAH_EN_EVENTS=state.events;
 const PILOT_EVENTS=[];
 window.addEventListener("waslah:buyer_event",event=>{
@@ -456,12 +474,12 @@ function renderCuts(){
  $("cutGuideInfo").textContent=({whole:"Whole: Flat and Point together; Point partly overlaps Flat.",flat:"Flat: the longer, leaner portion of the Whole.",point:"Point: a thicker, fattier portion partially overlapping the Flat."})[state.cut];
 }
 function reset(){
- state.step=-1;state.selected=null;state.completed=false;state.passed.clear();
+ state.step=-1;state.selected=null;state.completed=false;state.grainObservation=null;state.passed.clear();
  $("welcome").hidden=false;$("journey").hidden=true;$("done").hidden=true;
  setMode("buyer");
 }
 function start(){
- state.step=0;state.session++;state.selected=null;state.completed=false;state.passed.clear();state.events.length=0;
+ state.step=0;state.session++;state.selected=null;state.completed=false;state.grainObservation=null;state.passed.clear();state.events.length=0;
  $("welcome").hidden=true;$("journey").hidden=false;$("done").hidden=true;
  track("guide_open",{meaning:"raw_cut_route_started"});renderStep();window.scrollTo(0,0);
 }
@@ -544,11 +562,22 @@ function detailForStep(){
  const p=$("fieldGuideSources");p.replaceChildren();
  for(const [title,url] of detail.links){const a=document.createElement("a");a.textContent=title;a.href=url;a.target="_blank";a.rel="noopener noreferrer";p.appendChild(a)}
 }
+function grainObservationText(){
+ if(state.grainObservation==="visible")return "Buyer reports seeing 2–3 parallel fibers before cooking; re-check actual cooked fibers before any cut.";
+ if(state.grainObservation==="unclear")return "Buyer could not confidently identify grain before cooking; do not guess slicing angle. Re-check cooked fibers or seek knowledgeable help.";
+ return "Not recorded; no pre-cook grain direction verified. Re-check cooked fibers before slicing.";
+}
+function renderGrain(){
+ const box=$("grainRecord");box.hidden=state.step!==1;
+ if(box.hidden)return;
+ document.querySelectorAll("button[data-grain]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.grain===state.grainObservation)));
+ $("grainFeedback").textContent=grainObservationText()+" Self-report only, not a validated practical skill.";
+}
 function renderStep(){
  const x=DATA[state.cut][state.step];$("counter").textContent="STEP "+(state.step+1)+" OF 5";$("bar").style.width=((state.step+1)/5*100)+"%";
- $("stepTitle").textContent=x.title;$("stepLead").textContent=x.lead;$("cutName").textContent="YOUR RAW CUT: "+CUT_LABEL[state.cut];
+ $("stepTitle").textContent=x.title;$("stepLead").textContent=x.lead+(state.step===4&&state.grainObservation==="unclear"?" You could not find the grain before cooking: do not assume a slicing angle from any diagram.":"");$("cutName").textContent="YOUR RAW CUT: "+CUT_LABEL[state.cut];
  const list=$("wholeTaskList");list.replaceChildren();for(const action of x.task){const li=document.createElement("li");li.textContent=action;list.appendChild(li)}
- visualCards(x.visual);$("selfCheck").open=false;$("prompt").textContent=x.question;
+ renderGrain();visualCards(x.visual);$("selfCheck").open=false;$("prompt").textContent=x.question;
  const options=$("options");options.replaceChildren();
  x.answers.forEach((value,i)=>{const b=document.createElement("button");b.type="button";b.className="answer";b.dataset.answer=String(i);b.setAttribute("aria-pressed",String(state.selected===i));const badge=document.createElement("span");badge.textContent=i===0?"A":"B";b.append(badge,document.createTextNode(value));b.addEventListener("click",()=>choose(i));options.appendChild(b)});
  const f=$("feedback");f.hidden=state.selected===null;f.className="feedback";
@@ -567,6 +596,7 @@ function next(){
 function back(){if(state.step===0){reset();return}state.step--;state.selected=null;renderStep();window.scrollTo(0,0)}
 function planText(){
  const lines=["WASLAH / RAW BRISKET / INDEPENDENT ENGLISH CONCEPT","Cut: "+CUT_LABEL[state.cut],"For RAW beef brisket ONLY; not for cooked Smoked Brisket.","This is a reference checklist, NOT an approved food-safety program.",""];
+ lines.push("Pre-cook grain observation: "+grainObservationText());
  DATA[state.cut].forEach((item,i)=>{lines.push(item.title);item.task.forEach((action,j)=>lines.push((j+1)+". "+action));lines.push("STOP CONDITION: "+item.safety);
  if(i>=2){const d=practicalDetail(i+1,state.cut);lines.push("HOW TO: "+d.title);for(const t of d.steps)lines.push(" - "+t);lines.push(d.why);for(const [name,url] of d.links)lines.push("Source: "+name+" — "+url)}
  lines.push("Editorial source: "+item.sourceUrl,"")});
@@ -576,7 +606,7 @@ function planText(){
 function renderPlan(){
  const wrap=$("planBody");wrap.replaceChildren();
  $("planTitle").textContent="Your "+CUT_LABEL[state.cut]+" checklist";
- $("planIntro").textContent="Five agreed modules: identify, find grain, Whole-only trim check, cooking decisions, then safe rest and slicing.";
+ $("planIntro").textContent="Five agreed modules: identify, find grain, Whole-only trim check, cooking decisions, then safe rest and slicing. Pre-cook grain: "+grainObservationText();
  DATA[state.cut].forEach((item,i)=>{
   const section=document.createElement("section");section.className="plan-section";const h=document.createElement("h3");h.textContent=item.title;
   const ol=document.createElement("ol");item.task.forEach(t=>{const li=document.createElement("li");li.textContent=t;ol.appendChild(li)});
@@ -596,6 +626,7 @@ function downloadPlan(){
 }
 document.querySelectorAll("button[data-cut]").forEach(b=>b.addEventListener("click",()=>{state.cut=b.dataset.cut;renderCuts()}));
 $("buyerTab").addEventListener("click",()=>setMode("buyer"));$("storeTab").addEventListener("click",()=>setMode("store"));
+document.querySelectorAll("button[data-grain]").forEach(b=>b.addEventListener("click",()=>{if(state.step!==1)return;state.grainObservation=b.dataset.grain;renderGrain()}));
 $("start").addEventListener("click",start);$("reset").addEventListener("click",reset);$("back").addEventListener("click",back);$("next").addEventListener("click",next);
 $("tryBuyer").addEventListener("click",()=>{setMode("buyer");reset()});$("toStore").addEventListener("click",()=>setMode("store"));
 $("productExample").addEventListener("click",()=>{if(state.completed)track("product_handoff_click",{demo:true,destination:$("productExample").href,variant_selection:"manual"})});
